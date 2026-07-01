@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-montserrat);
   background: #fff;
   color: #1a1a1a;
 }
@@ -163,7 +163,7 @@ body {
   font-size: 56px;
   line-height: 1;
   color: #2196c4;
-  font-family: Georgia, serif;
+  font-family: var(--font-museo-slab);
 }
 
 .ce-quote p {

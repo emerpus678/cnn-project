@@ -18,7 +18,7 @@ defined( 'ABSPATH' ) || exit;
 		>
 
 		<div class="hero-parallax__overlays" aria-hidden="true">
-			<div class="hero-parallax__mask hero-parallax__mask--wave">
+			<div class="hero-parallax__mask hero-parallax__mask--wave" data-scroll-mask>
 				<img
 					class="hero-parallax__wave"
 					src="<?php echo ibm_cognitive_asset_url( 'svg/wave.svg' ); ?>"
@@ -26,7 +26,7 @@ defined( 'ABSPATH' ) || exit;
 				>
 			</div>
 
-			<div class="hero-parallax__mask hero-parallax__mask--lines">
+			<div class="hero-parallax__mask hero-parallax__mask--lines" data-scroll-mask>
 				<img
 					class="hero-parallax__lines"
 					src="<?php echo ibm_cognitive_asset_url( 'svg/lines.svg' ); ?>"

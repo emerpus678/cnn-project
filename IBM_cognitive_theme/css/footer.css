@@ -1,7 +1,7 @@
 
     body {
       margin: 0;
-      font-family: montserrat, sans-serif;
+      font-family: var(--font-montserrat);
       font-weight: 300;
       font-style: normal;
       background: #000;
@@ -9,7 +9,7 @@
 
     /* ── "Find out more" label — Museo Slab 300 ── */
     .ice-footer__cta-text {
-      font-family: museo-slab, serif;
+      font-family: var(--font-museo-slab);
       font-weight: 300;
       font-style: normal;
       font-size: 1rem;
@@ -20,7 +20,7 @@
 
     /* ── Nav links — Montserrat Medium ── */
     .ice-footer__links a {
-      font-family: montserrat, sans-serif;
+      font-family: var(--font-montserrat);
       font-weight: 500;
       font-style: normal;
       font-size: 0.8125rem;
@@ -35,7 +35,7 @@
 
     /* ── Legal copy — Montserrat Light ── */
     .ice-footer__legal {
-      font-family: montserrat, sans-serif;
+      font-family: var(--font-montserrat);
       font-weight: 300;
       font-style: normal;
       font-size: 0.75rem;

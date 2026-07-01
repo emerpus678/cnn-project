@@ -23,7 +23,7 @@
 
 .hero__eyebrow {
   display: block;
-  font-family: "Museo Slab", Georgia, serif;
+  font-family: var(--font-museo-slab);
   font-weight: 300;
   font-style: normal;
   font-size: 28px;
@@ -34,7 +34,7 @@
 
 .hero__title {
   display: block;
-  font-family: "Museo Slab", Georgia, serif;
+  font-family: var(--font-museo-slab);
   font-weight: 300;
   font-style: normal;
   font-size: 72px;
@@ -45,7 +45,7 @@
 }
 
 .hero__body {
-  font-family: montserrat, "Montserrat", sans-serif;
+  font-family: var(--font-montserrat);
   font-weight: 300;
   font-style: normal;
   font-size: 16px;

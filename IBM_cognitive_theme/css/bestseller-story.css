@@ -6,18 +6,11 @@
 
 
 body {
-    font-family: "IBM Plex Sans", "Segoe UI", Arial, sans-serif;
-    background:
-        radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.05), transparent 24%),
-        linear-gradient(180deg, #0f5a72 0%, #0b566d 100%);
+    font-family: var(--font-montserrat);
     color: #ffffff;
 }
 
-img {
-    display: block;
-    max-width: 100%;
-}
-
+.bestseller-story,
 .product-story {
     min-height: 100vh;
     display: flex;
@@ -25,6 +18,15 @@ img {
     justify-content: center;
     gap: 3rem;
     overflow: hidden;
+    padding: 5rem 5rem 4rem;
+    background:
+        radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.05), transparent 24%),
+        linear-gradient(180deg, #0f5a72 0%, #0b566d 100%);
+}
+
+img {
+    display: block;
+    max-width: 100%;
 }
 
 .product-story__content {
@@ -141,7 +143,8 @@ img {
 }
 
 @media (max-width: 1080px) {
-    .product-story {
+    .bestseller-story,
+.product-story {
         padding: 3.5rem 2rem 2.5rem;
     }
 
@@ -167,7 +170,8 @@ img {
 }
 
 @media (max-width: 640px) {
-    .product-story {
+    .bestseller-story,
+.product-story {
         padding: 2.25rem 1rem 1.75rem;
         gap: 2rem;
     }

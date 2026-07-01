@@ -36,7 +36,7 @@ function ibm_cognitive_asset_url( $path ) {
 function ibm_cognitive_enqueue_assets() {
 	wp_enqueue_style(
 		'ibm-cognitive-google-fonts',
-		'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap',
+		'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,500;0,700;1,300;1,500;1,700&display=swap',
 		array(),
 		null
 	);
@@ -44,7 +44,7 @@ function ibm_cognitive_enqueue_assets() {
 	wp_enqueue_style(
 		'ibm-cognitive-fonts',
 		IBM_COGNITIVE_URI . '/css/fonts.css',
-		array(),
+		array( 'ibm-cognitive-google-fonts' ),
 		IBM_COGNITIVE_VERSION
 	);
 
@@ -65,7 +65,7 @@ function ibm_cognitive_enqueue_assets() {
 	wp_enqueue_style(
 		'ibm-cognitive-hero-parallax',
 		IBM_COGNITIVE_URI . '/css/hero-parallax.css',
-		array(),
+		array( 'ibm-cognitive-fonts' ),
 		IBM_COGNITIVE_VERSION
 	);
 
@@ -86,7 +86,7 @@ function ibm_cognitive_enqueue_assets() {
 	wp_enqueue_style(
 		'ibm-cognitive-running-line',
 		IBM_COGNITIVE_URI . '/css/running-line.css',
-		array(),
+		array( 'ibm-cognitive-fonts' ),
 		IBM_COGNITIVE_VERSION
 	);
 
@@ -107,7 +107,7 @@ function ibm_cognitive_enqueue_assets() {
 	wp_enqueue_style(
 		'ibm-cognitive-cognitive-story',
 		IBM_COGNITIVE_URI . '/css/cognitive-story.css',
-		array(),
+		array( 'ibm-cognitive-fonts' ),
 		IBM_COGNITIVE_VERSION
 	);
 
@@ -126,9 +126,51 @@ function ibm_cognitive_enqueue_assets() {
 	);
 
 	wp_enqueue_style(
+		'ibm-cognitive-bestseller-page',
+		IBM_COGNITIVE_URI . '/css/bestseller-page.css',
+		array( 'ibm-cognitive-fonts' ),
+		IBM_COGNITIVE_VERSION
+	);
+
+	wp_enqueue_style(
+		'ibm-cognitive-bestseller-intro',
+		IBM_COGNITIVE_URI . '/css/bestseller-intro.css',
+		array( 'ibm-cognitive-fonts', 'ibm-cognitive-bestseller-page' ),
+		IBM_COGNITIVE_VERSION
+	);
+
+	wp_enqueue_style(
+		'ibm-cognitive-bestseller-story',
+		IBM_COGNITIVE_URI . '/css/bestseller-story.css',
+		array( 'ibm-cognitive-fonts' ),
+		IBM_COGNITIVE_VERSION
+	);
+
+	wp_enqueue_style(
+		'ibm-cognitive-bestseller-quote',
+		IBM_COGNITIVE_URI . '/css/bestseller-quote.css',
+		array( 'ibm-cognitive-fonts' ),
+		IBM_COGNITIVE_VERSION
+	);
+
+	wp_enqueue_style(
+		'ibm-cognitive-seven-factors',
+		IBM_COGNITIVE_URI . '/css/seven-factors.css',
+		array( 'ibm-cognitive-fonts' ),
+		IBM_COGNITIVE_VERSION
+	);
+
+	wp_enqueue_style(
+		'ibm-cognitive-ice-footer',
+		IBM_COGNITIVE_URI . '/css/ice-footer.css',
+		array( 'ibm-cognitive-fonts' ),
+		IBM_COGNITIVE_VERSION
+	);
+
+	wp_enqueue_style(
 		'ibm-cognitive-style',
 		get_stylesheet_uri(),
-		array( 'ibm-cognitive-nav', 'ibm-cognitive-hero', 'ibm-cognitive-hero-parallax', 'ibm-cognitive-hero-parallax-overlays', 'ibm-cognitive-intro', 'ibm-cognitive-deep-blue', 'ibm-cognitive-running-line', 'ibm-cognitive-tech-focus', 'ibm-cognitive-cognitive-story', 'ibm-cognitive-cognitive-quote', 'ibm-cognitive-data-teaser' ),
+		array( 'ibm-cognitive-nav', 'ibm-cognitive-hero', 'ibm-cognitive-hero-parallax', 'ibm-cognitive-hero-parallax-overlays', 'ibm-cognitive-intro', 'ibm-cognitive-deep-blue', 'ibm-cognitive-running-line', 'ibm-cognitive-tech-focus', 'ibm-cognitive-cognitive-story', 'ibm-cognitive-cognitive-quote', 'ibm-cognitive-data-teaser', 'ibm-cognitive-bestseller-page', 'ibm-cognitive-bestseller-intro', 'ibm-cognitive-bestseller-story', 'ibm-cognitive-bestseller-quote', 'ibm-cognitive-seven-factors', 'ibm-cognitive-ice-footer' ),
 		IBM_COGNITIVE_VERSION
 	);
 
@@ -176,6 +218,22 @@ function ibm_cognitive_enqueue_assets() {
 		'ibm-cognitive-tech-focus',
 		IBM_COGNITIVE_URI . '/scripts/tech-focus.js',
 		array( 'gsap-scroll-trigger' ),
+		IBM_COGNITIVE_VERSION,
+		true
+	);
+
+	wp_enqueue_script(
+		'ibm-cognitive-seven-factors',
+		IBM_COGNITIVE_URI . '/scripts/lottie2.js',
+		array( 'lottie-web' ),
+		IBM_COGNITIVE_VERSION,
+		true
+	);
+
+	wp_enqueue_script(
+		'ibm-cognitive-bestseller-scroll',
+		IBM_COGNITIVE_URI . '/scripts/bestseller-scroll.js',
+		array(),
 		IBM_COGNITIVE_VERSION,
 		true
 	);

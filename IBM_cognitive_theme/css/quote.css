@@ -25,7 +25,7 @@ body {
 
 /* Paragraph Typography */
 .body-text {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-montserrat);
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.75;
@@ -44,7 +44,7 @@ body {
 
 /* Quote Icon color matched to image (#42c3f5) */
 .quote-icon {
-    font-family: 'Lora', serif;
+    font-family: var(--font-museo-slab);
     font-size: 5.5rem;
     color: #42c3f5; 
     line-height: 1;
@@ -54,7 +54,7 @@ body {
 
 /* Core Quote Text */
 .quote-text {
-    font-family: 'Lora', serif;
+    font-family: var(--font-museo-slab);
     font-size: 2.15rem;
     font-weight: 400;
     line-height: 1.45;
@@ -64,7 +64,7 @@ body {
 
 /* Citation/Author Text */
 .quote-author {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-montserrat);
     font-size: 0.85rem;
     font-style: italic;
     font-weight: 400;

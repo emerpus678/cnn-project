@@ -3,31 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Intro — Dev Preview</title>
-
+  <title>Seven Factors — Dev Preview</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,500;0,700;1,300;1,500;1,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/fonts.css">
-  <link rel="stylesheet" href="../css/intro.css">
+  <link rel="stylesheet" href="../css/seven-factors.css">
   <link rel="stylesheet" href="../css/dev.css">
 </head>
 <body>
-
-  <aside class="dev-bar" aria-label="Development navigation">
-    <span class="dev-bar__label">Dev preview</span>
-    <a href="index.html">Full page</a>
-    <a href="nav.html">Nav</a>
-    <a href="hero.html">Hero</a>
-    <a href="hero-parallax.html">Hero parallax</a>
-    <a href="intro.html">Intro</a>
-  </aside>
-
+  <div id="dev-nav"></div>
   <main id="dev-page"></main>
-
+  <script src="https://cdn.jsdelivr.net/npm/lottie-web@5.12.2/build/player/lottie.min.js"></script>
+  <script src="../scripts/lottie2.js"></script>
   <script src="dev-loader.js"></script>
   <script>
-    DevLoader.load(['partials/intro.html'], '#dev-page');
+    DevLoader.load(['partials/dev-nav.html'], '#dev-nav').then(function () {
+      return DevLoader.load(['partials/seven-factors.html'], '#dev-page');
+    }).then(function () {
+      if (window.IbmCognitiveSevenFactors) {
+        window.IbmCognitiveSevenFactors.resetAndInit();
+      }
+    });
   </script>
 </body>
 </html>

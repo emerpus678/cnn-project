@@ -28,7 +28,7 @@
   width: 416px;
   height: 96px;
   box-sizing: border-box;
-  font-family: montserrat, "Montserrat", sans-serif;
+  font-family: var(--font-montserrat);
   font-weight: 300;
   font-style: normal;
   font-size: 16px;

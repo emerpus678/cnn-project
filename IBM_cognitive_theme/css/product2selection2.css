@@ -6,7 +6,7 @@
 
 
 body {
-    font-family: "IBM Plex Sans", "Segoe UI", Arial, sans-serif;
+    font-family: var(--font-montserrat);
     background:
         radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.05), transparent 24%),
         linear-gradient(180deg, #0f5a72 0%, #0b566d 100%);

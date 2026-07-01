@@ -1,12 +1,4 @@
 <!DOCTYPE html>
-<!--
-  Dev preview — run local server from IBM_cognitive_theme/ (NOT html/):
-    cd IBM_cognitive_theme
-    python3 -m http.server 8080
-  Then open http://localhost:8080/html/index.html
-
-  WordPress production uses: header.php, templetes/hero.php, templetes/hero-parallax.php, templetes/intro.php
--->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -15,7 +7,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,500;0,700;1,300;1,500;1,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/fonts.css">
   <link rel="stylesheet" href="../css/nav.css">
   <link rel="stylesheet" href="../css/hero.css">
@@ -28,21 +20,17 @@
   <link rel="stylesheet" href="../css/cognitive-story.css">
   <link rel="stylesheet" href="../css/cognitive-quote.css">
   <link rel="stylesheet" href="../css/data-teaser.css">
+  <link rel="stylesheet" href="../css/bestseller-page.css">
+  <link rel="stylesheet" href="../css/bestseller-intro.css">
+  <link rel="stylesheet" href="../css/bestseller-story.css">
+  <link rel="stylesheet" href="../css/bestseller-quote.css">
+  <link rel="stylesheet" href="../css/seven-factors.css">
+  <link rel="stylesheet" href="../css/ice-footer.css">
   <link rel="stylesheet" href="../css/dev.css">
 </head>
 <body>
 
-  <aside class="dev-bar" aria-label="Development navigation">
-    <span class="dev-bar__label">Dev preview</span>
-    <a href="index.html">Full page</a>
-    <a href="nav.html">Nav</a>
-    <a href="hero.html">Hero</a>
-    <a href="hero-parallax.html">Hero parallax</a>
-    <a href="intro.html">Intro</a>
-    <a href="deep-blue.html">Deep Blue</a>
-    <a href="tech-focus.html">Tech focus</a>
-    <a href="cognitive-quote.html">Cognitive quote</a>
-  </aside>
+  <div id="dev-nav"></div>
 
   <main id="dev-page"></main>
   <div class="dev-scroll-spacer" aria-hidden="true"></div>
@@ -53,22 +41,33 @@
   <script src="https://cdn.jsdelivr.net/npm/lottie-web@5.12.2/build/player/lottie.min.js"></script>
   <script src="../scripts/deep-blue.js"></script>
   <script src="../scripts/tech-focus.js"></script>
+  <script src="../scripts/lottie2.js"></script>
+  <script src="../scripts/bestseller-scroll.js"></script>
   <script src="dev-loader.js"></script>
   <script>
-    DevLoader.load([
-      'partials/nav.html',
-      'partials/hero.html',
-      'partials/hero-parallax.html',
-      'partials/intro.html',
-      'partials/ibm-story-start.html',
-      'partials/deep-blue.html',
-      'partials/tech-focus.html',
-      'partials/cognitive-story-start.html',
-      'partials/cognitive-quote.html',
-      'partials/data-teaser.html',
-      'partials/cognitive-story-end.html',
-      'partials/ibm-story-end.html',
-    ], '#dev-page').then(function () {
+    DevLoader.load(['partials/dev-nav.html'], '#dev-nav').then(function () {
+      return DevLoader.load([
+        'partials/nav.html',
+        'partials/hero.html',
+        'partials/hero-parallax.html',
+        'partials/intro.html',
+        'partials/ibm-story-start.html',
+        'partials/deep-blue.html',
+        'partials/tech-focus.html',
+        'partials/cognitive-story-start.html',
+        'partials/cognitive-quote.html',
+        'partials/data-teaser.html',
+        'partials/cognitive-story-end.html',
+        'partials/ibm-story-end.html',
+        'partials/bestseller-page-start.html',
+        'partials/bestseller-intro.html',
+        'partials/bestseller-story.html',
+        'partials/bestseller-quote.html',
+        'partials/bestseller-page-end.html',
+        'partials/seven-factors.html',
+        'partials/ice-footer.html',
+      ], '#dev-page');
+    }).then(function () {
       if (window.IbmCognitiveHeroParallax) {
         window.IbmCognitiveHeroParallax.resetAndInit();
       }
@@ -77,6 +76,12 @@
       }
       if (window.IbmCognitiveTechFocus) {
         window.IbmCognitiveTechFocus.resetAndInit();
+      }
+      if (window.IbmCognitiveSevenFactors) {
+        window.IbmCognitiveSevenFactors.resetAndInit();
+      }
+      if (window.IbmCognitiveBestsellerScroll) {
+        window.IbmCognitiveBestsellerScroll.resetAndInit();
       }
     });
   </script>

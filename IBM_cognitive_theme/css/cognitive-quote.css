@@ -55,7 +55,7 @@
 }
 
 .cognitive-quote__lead {
-  font-family: montserrat, "Montserrat", sans-serif;
+  font-family: var(--font-montserrat);
   font-weight: 300;
   font-style: normal;
   font-size: 16px;
@@ -67,7 +67,7 @@
 
 .cognitive-quote__mark {
   display: block;
-  font-family: "Museo Slab", Georgia, serif;
+  font-family: var(--font-museo-slab);
   font-weight: 300;
   font-size: 80px;
   line-height: 0.75;
@@ -83,7 +83,7 @@
 }
 
 .cognitive-quote__quote p {
-  font-family: "Museo Slab", Georgia, serif;
+  font-family: var(--font-museo-slab);
   font-weight: 300;
   font-style: normal;
   font-size: 24px;
@@ -95,7 +95,7 @@
 
 .cognitive-quote__cite {
   display: block;
-  font-family: montserrat, "Montserrat", sans-serif;
+  font-family: var(--font-montserrat);
   font-weight: 300;
   font-style: normal;
   font-size: 16px;

@@ -1,5 +1,6 @@
 /**
  * Scroll-activated mask reveal for hero parallax wave.svg + lines.svg.
+ * Targets [data-scroll-mask] elements inside .hero-parallax sections.
  */
 (function (window) {
   'use strict';
@@ -15,6 +16,10 @@
   };
 
   function killSectionTriggers(section) {
+    if (!window.ScrollTrigger) {
+      return;
+    }
+
     window.ScrollTrigger.getAll().forEach(function (trigger) {
       if (trigger.trigger === section) {
         trigger.kill();
@@ -22,9 +27,35 @@
     });
   }
 
+  function whenImagesReady(section, callback) {
+    var images = section.querySelectorAll('img');
+    var pending = images.length;
+
+    if (!pending) {
+      callback();
+      return;
+    }
+
+    function done() {
+      pending -= 1;
+      if (pending <= 0) {
+        callback();
+      }
+    }
+
+    images.forEach(function (img) {
+      if (img.complete) {
+        done();
+      } else {
+        img.addEventListener('load', done, { once: true });
+        img.addEventListener('error', done, { once: true });
+      }
+    });
+  }
+
   function initHeroParallaxAnimations(forceReset) {
     if (typeof window.gsap === 'undefined' || typeof window.ScrollTrigger === 'undefined') {
-      console.warn('IBM Cognitive: GSAP or ScrollTrigger not loaded.');
+      console.warn('[IBM Cognitive] GSAP or ScrollTrigger not loaded.');
       return;
     }
 
@@ -37,53 +68,55 @@
         return;
       }
 
-      var waveMask = section.querySelector('.hero-parallax__mask--wave');
-      var linesMask = section.querySelector('.hero-parallax__mask--lines');
+      var masks = section.querySelectorAll('[data-scroll-mask]');
 
-      if (!waveMask || !linesMask) {
-        console.warn('IBM Cognitive: wave/lines mask elements not found.');
+      if (!masks.length) {
+        console.warn('[IBM Cognitive] No [data-scroll-mask] elements found.');
         return;
       }
 
       killSectionTriggers(section);
       section.dataset.parallaxInit = 'true';
-      section.classList.add('is-ready');
 
       if (reducedMotion) {
-        window.gsap.set([waveMask, linesMask], VISIBLE);
+        section.classList.add('is-ready');
+        window.gsap.set(masks, VISIBLE);
         return;
       }
 
-      window.gsap.set([waveMask, linesMask], HIDDEN);
+      window.gsap.set(masks, HIDDEN);
 
-      /* One timeline scrubbed across full section scroll */
-      window.gsap
-        .timeline({
+      whenImagesReady(section, function () {
+        section.classList.add('is-ready');
+
+        var timeline = window.gsap.timeline({
           scrollTrigger: {
             trigger: section,
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: 0.5,
+            start: 'top 85%',
+            end: 'bottom 15%',
+            scrub: 0.6,
             invalidateOnRefresh: true,
           },
-        })
-        /* Reveal wave + lines (first 35% of scroll through section) */
-        .to(waveMask, Object.assign({}, VISIBLE, { duration: 0.3, ease: 'power2.out' }), 0)
-        .to(linesMask, Object.assign({}, VISIBLE, { duration: 0.3, ease: 'power2.out' }), 0.12)
-        /* Hold visible (middle) */
-        /* Mask out (last 25% of scroll through section) */
-        .to(waveMask, Object.assign({}, HIDDEN, { duration: 0.25, ease: 'power2.in' }), 0.75)
-        .to(linesMask, Object.assign({}, HIDDEN, { duration: 0.25, ease: 'power2.in' }), 0.8);
-    });
+        });
 
-    window.requestAnimationFrame(function () {
-      window.ScrollTrigger.refresh();
+        masks.forEach(function (mask, index) {
+          var revealAt = index * 0.1;
+          var hideAt = 0.72 + index * 0.04;
+
+          timeline
+            .to(mask, Object.assign({}, VISIBLE, { duration: 0.3, ease: 'power2.out' }), revealAt)
+            .to(mask, Object.assign({}, HIDDEN, { duration: 0.25, ease: 'power2.in' }), hideAt);
+        });
+
+        window.ScrollTrigger.refresh(true);
+      });
     });
   }
 
   function resetAndInit() {
     document.querySelectorAll('.hero-parallax').forEach(function (section) {
       delete section.dataset.parallaxInit;
+      section.classList.remove('is-ready');
     });
     initHeroParallaxAnimations(true);
   }
@@ -95,11 +128,17 @@
 
   document.addEventListener('dev:partials-loaded', resetAndInit);
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function () {
+  function boot() {
+    if (document.querySelector('.hero-parallax')) {
       initHeroParallaxAnimations(false);
-    });
-  } else if (document.querySelector('.hero-parallax')) {
-    initHeroParallaxAnimations(false);
+    }
   }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot);
+  } else {
+    boot();
+  }
+
+  window.addEventListener('load', resetAndInit);
 })(window);

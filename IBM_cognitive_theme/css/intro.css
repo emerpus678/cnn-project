@@ -19,7 +19,7 @@
 
 .intro__lead,
 .intro__body {
-  font-family: montserrat, "Montserrat", sans-serif;
+  font-family: var(--font-montserrat);
   font-weight: 300;
   font-style: normal;
   font-size: 16px;

@@ -94,7 +94,7 @@
 }
 
 .tech-focus__heading {
-  font-family: "Museo Slab", Georgia, serif;
+  font-family: var(--font-museo-slab);
   font-weight: 300;
   font-style: normal;
   font-size: 26px;
@@ -104,7 +104,7 @@
 }
 
 .tech-focus__body {
-  font-family: montserrat, "Montserrat", sans-serif;
+  font-family: var(--font-montserrat);
   font-weight: 300;
   font-style: normal;
   font-size: 16px;

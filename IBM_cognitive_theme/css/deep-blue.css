@@ -34,7 +34,7 @@
 }
 
 .deep-blue__quote {
-  font-family: "Museo Slab", Georgia, serif;
+  font-family: var(--font-museo-slab);
   font-weight: 300;
   font-style: normal;
   font-size: 26px;
@@ -70,7 +70,7 @@
 }
 
 .deep-blue__body {
-  font-family: montserrat, "Montserrat", sans-serif;
+  font-family: var(--font-montserrat);
   font-weight: 300;
   font-style: normal;
   font-size: 16px;
@@ -88,7 +88,7 @@
 
 .deep-blue__stat-lead,
 .deep-blue__stat-label {
-  font-family: montserrat, "Montserrat", sans-serif;
+  font-family: var(--font-montserrat);
   font-weight: 300;
   font-size: 16px;
   line-height: 1.65;
@@ -98,7 +98,7 @@
 }
 
 .deep-blue__stat-number {
-  font-family: "Museo Slab", Georgia, serif;
+  font-family: var(--font-museo-slab);
   font-weight: 300;
   font-size: 72px;
   line-height: 1.05;

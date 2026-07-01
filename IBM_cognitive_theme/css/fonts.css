@@ -1,7 +1,170 @@
+:root {
+  --font-museo-slab: museo-slab, "Museo Slab", Georgia, "Times New Roman", serif;
+  --font-montserrat: montserrat, "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --font-weight-thin: 100;
+  --font-weight-light: 300;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  --font-weight-heavy: 800;
+}
+
+/* ── Museo Slab (Typekit name: museo-slab) ── */
+@font-face {
+  font-family: museo-slab;
+  font-style: normal;
+  font-weight: 100;
+  src: url("https://fonts.cdnfonts.com/s/57462/Museo_Slab_100.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: museo-slab;
+  font-style: normal;
+  font-weight: 300;
+  src: url("https://fonts.cdnfonts.com/s/57462/Museo_Slab_300.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: museo-slab;
+  font-style: normal;
+  font-weight: 500;
+  src: url("https://fonts.cdnfonts.com/s/57462/Museo_Slab_500.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: museo-slab;
+  font-style: normal;
+  font-weight: 700;
+  src: url("https://fonts.cdnfonts.com/s/57462/Museo_Slab_700.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: museo-slab;
+  font-style: normal;
+  font-weight: 800;
+  src: url("https://fonts.cdnfonts.com/s/57462/Museo_Slab_900.woff") format("woff");
+  font-display: swap;
+}
+
+/* Alias for existing rules using "Museo Slab" */
+@font-face {
+  font-family: "Museo Slab";
+  font-style: normal;
+  font-weight: 100;
+  src: url("https://fonts.cdnfonts.com/s/57462/Museo_Slab_100.woff") format("woff");
+  font-display: swap;
+}
+
 @font-face {
   font-family: "Museo Slab";
   font-style: normal;
   font-weight: 300;
   src: url("https://fonts.cdnfonts.com/s/57462/Museo_Slab_300.woff") format("woff");
   font-display: swap;
+}
+
+@font-face {
+  font-family: "Museo Slab";
+  font-style: normal;
+  font-weight: 500;
+  src: url("https://fonts.cdnfonts.com/s/57462/Museo_Slab_500.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Museo Slab";
+  font-style: normal;
+  font-weight: 700;
+  src: url("https://fonts.cdnfonts.com/s/57462/Museo_Slab_700.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Museo Slab";
+  font-style: normal;
+  font-weight: 800;
+  src: url("https://fonts.cdnfonts.com/s/57462/Museo_Slab_900.woff") format("woff");
+  font-display: swap;
+}
+
+/* ── Global defaults ── */
+body {
+  font-family: var(--font-montserrat);
+  font-weight: var(--font-weight-light);
+  font-style: normal;
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Museo Slab utilities (fonts.docx) ── */
+.font-museo-slab-100 {
+  font-family: var(--font-museo-slab);
+  font-weight: 100;
+  font-style: normal;
+}
+
+.font-museo-slab-300 {
+  font-family: var(--font-museo-slab);
+  font-weight: 300;
+  font-style: normal;
+}
+
+.font-museo-slab-500 {
+  font-family: var(--font-museo-slab);
+  font-weight: 500;
+  font-style: normal;
+}
+
+.font-museo-slab-700 {
+  font-family: var(--font-museo-slab);
+  font-weight: 700;
+  font-style: normal;
+}
+
+.font-museo-slab-900 {
+  font-family: var(--font-museo-slab);
+  font-weight: 800;
+  font-style: normal;
+}
+
+/* ── Montserrat utilities (fonts.docx) ── */
+.font-montserrat-light-italic {
+  font-family: var(--font-montserrat);
+  font-weight: 300;
+  font-style: italic;
+}
+
+.font-montserrat-light {
+  font-family: var(--font-montserrat);
+  font-weight: 300;
+  font-style: normal;
+}
+
+.font-montserrat-medium {
+  font-family: var(--font-montserrat);
+  font-weight: 500;
+  font-style: normal;
+}
+
+.font-montserrat-medium-italic {
+  font-family: var(--font-montserrat);
+  font-weight: 500;
+  font-style: italic;
+}
+
+.font-montserrat-bold {
+  font-family: var(--font-montserrat);
+  font-weight: 700;
+  font-style: normal;
+}
+
+.font-montserrat-bold-italic {
+  font-family: var(--font-montserrat);
+  font-weight: 700;
+  font-style: italic;
 }

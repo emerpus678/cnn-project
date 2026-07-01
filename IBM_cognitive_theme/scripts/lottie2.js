@@ -1,76 +1,114 @@
- // ── SVG canvas dimensions ──
- const SVG_W = 812;
- const SVG_H = 582;
- // SVG circle radius = 82  →  diameter = 164
- // Ring should be (164 / 812) = 20.2% of the container width
- const RING_RATIO = 164 / SVG_W; // fraction of container width
+/**
+ * Seven success factors — node positioning + Lottie icons.
+ */
+(function (window) {
+  'use strict';
 
- // ── Position + size nodes to match SVG circles ──
- function positionNodes() {
-   const diagram = document.querySelector('.ce-diagram');
-   if (!diagram) return;
+  var SVG_W = 812;
+  var SVG_H = 582;
+  var RING_RATIO = 164 / SVG_W;
 
-   const containerW = diagram.offsetWidth;
-   const ringPx = Math.round(containerW * RING_RATIO);
-   const captionW = Math.round(ringPx * 1.1); // slightly wider than ring
+  function positionNodes() {
+    var diagram = document.querySelector('.ce-diagram');
+    if (!diagram) {
+      return;
+    }
 
-   document.querySelectorAll('.ce-node').forEach(node => {
-     const cx = parseFloat(node.dataset.cx);
-     const cy = parseFloat(node.dataset.cy);
+    var containerW = diagram.offsetWidth;
+    var ringPx = Math.round(containerW * RING_RATIO);
+    var captionW = Math.round(ringPx * 1.1);
 
-     // Position: percentage of container so it scales with resize
-     node.style.left = (cx / SVG_W * 100) + '%';
-     node.style.top = (cy / SVG_H * 100) + '%';
+    document.querySelectorAll('.ce-node').forEach(function (node) {
+      var cx = parseFloat(node.dataset.cx);
+      var cy = parseFloat(node.dataset.cy);
 
-     // Ring size: exact match to SVG circle
-     const ring = node.querySelector('.ce-icon-ring');
-     if (ring) {
-       ring.style.setProperty('--ring-size', ringPx + 'px');
-     }
+      node.style.left = (cx / SVG_W * 100) + '%';
+      node.style.top = (cy / SVG_H * 100) + '%';
 
-     // Caption: constrained to ring width so text wraps neatly
-     const caption = node.querySelector('.ce-caption');
-     if (caption) {
-       caption.style.width = captionW + 'px';
-     }
-   });
- }
+      var ring = node.querySelector('.ce-icon-ring');
+      if (ring) {
+        ring.style.setProperty('--ring-size', ringPx + 'px');
+      }
 
- // Re-run on resize so everything stays aligned
- positionNodes();
- window.addEventListener('resize', positionNodes);
+      var caption = node.querySelector('.ce-caption');
+      if (caption) {
+        caption.style.width = captionW + 'px';
+      }
+    });
+  }
 
- // ── Lottie loader with hover replay ──
- function loadLottie(containerId, path) {
-   const container = document.getElementById(containerId);
-   if (!container) return null;
+  function initLotties(forceReset) {
+    if (!window.lottie) {
+      console.warn('[IBM Cognitive] Lottie not loaded.');
+      return;
+    }
 
-   const anim = lottie.loadAnimation({
-     container,
-     renderer: 'svg',
-     loop: false,
-     autoplay: true,
-     path
-   });
+    document.querySelectorAll('.ce-lottie[data-lottie]').forEach(function (container) {
+      if (container.dataset.lottieInit === 'true' && !forceReset) {
+        return;
+      }
 
-   const ring = container.closest('.ce-icon-ring');
-   if (ring) {
-     ring.addEventListener('mouseenter', () => { anim.stop(); anim.play(); });
-   }
-   return anim;
- }
+      if (container._ibmLottieAnim) {
+        container._ibmLottieAnim.destroy();
+        container._ibmLottieAnim = null;
+      }
 
- const files = {
-   darwin: '../assets/animations/Animation/IBM_Icon_Darwin_V1.json',
-   data: '../assets/animations/Animation/IBM_Icon_Data_V1.json',
-   architect: '../assets/animations/Animation/IBM_Icon_Architect_V1.json',
-   ai: '../assets/animations/Animation/IBM_Icon_AI_V1.json',
-   agile: '../assets/animations/Animation/IBM_Icon_Agile_V1.json',
-   talent: '../assets/animations/Animation/IBM_Icon_Talent_V1.json',
-   exptech: '../assets/animations/Animation/ExponentialTech.json',
- };
+      container.innerHTML = '';
 
- // Desktop nodes
- Object.entries(files).forEach(([key, path]) => loadLottie(`lottie-${key}`, path));
- // Mobile nodes
- Object.entries(files).forEach(([key, path]) => loadLottie(`lottie-${key}-m`, path));
+      var anim = window.lottie.loadAnimation({
+        container: container,
+        renderer: 'svg',
+        loop: false,
+        autoplay: true,
+        path: container.dataset.lottie,
+      });
+
+      container.dataset.lottieInit = 'true';
+      container._ibmLottieAnim = anim;
+
+      var ring = container.closest('.ce-icon-ring');
+      if (ring) {
+        ring.addEventListener('mouseenter', function () {
+          anim.stop();
+          anim.play();
+        });
+      }
+    });
+  }
+
+  function initSevenFactors(forceReset) {
+    positionNodes();
+    initLotties(forceReset);
+  }
+
+  function resetAndInit() {
+    document.querySelectorAll('.ce-lottie[data-lottie]').forEach(function (container) {
+      if (container._ibmLottieAnim) {
+        container._ibmLottieAnim.destroy();
+        container._ibmLottieAnim = null;
+      }
+      delete container.dataset.lottieInit;
+    });
+    initSevenFactors(true);
+  }
+
+  window.IbmCognitiveSevenFactors = {
+    init: initSevenFactors,
+    resetAndInit: resetAndInit,
+  };
+
+  document.addEventListener('dev:partials-loaded', resetAndInit);
+  window.addEventListener('resize', positionNodes);
+
+  function boot() {
+    if (document.querySelector('.ce-section')) {
+      initSevenFactors(false);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot);
+  } else {
+    boot();
+  }
+})(window);
