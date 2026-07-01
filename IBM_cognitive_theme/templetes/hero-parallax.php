@@ -18,19 +18,41 @@ defined( 'ABSPATH' ) || exit;
 		>
 
 		<div class="hero-parallax__overlays" aria-hidden="true">
-			<div class="hero-parallax__mask hero-parallax__mask--wave" data-scroll-mask>
+			<div class="hero-parallax__mask hero-parallax__mask--wave hero-parallax__mask--left">
 				<img
 					class="hero-parallax__wave"
 					src="<?php echo ibm_cognitive_asset_url( 'svg/wave.svg' ); ?>"
 					alt=""
+					aria-hidden="true"
+					decoding="async"
+				>
+			</div>
+			<div class="hero-parallax__mask hero-parallax__mask--wave hero-parallax__mask--right" data-scroll-mask="wave">
+				<img
+					class="hero-parallax__wave"
+					src="<?php echo ibm_cognitive_asset_url( 'svg/wave.svg' ); ?>"
+					alt=""
+					aria-hidden="true"
+					decoding="async"
 				>
 			</div>
 
-			<div class="hero-parallax__mask hero-parallax__mask--lines" data-scroll-mask>
+			<div class="hero-parallax__mask hero-parallax__mask--lines hero-parallax__mask--left">
 				<img
 					class="hero-parallax__lines"
 					src="<?php echo ibm_cognitive_asset_url( 'svg/lines.svg' ); ?>"
 					alt=""
+					aria-hidden="true"
+					decoding="async"
+				>
+			</div>
+			<div class="hero-parallax__mask hero-parallax__mask--lines hero-parallax__mask--right" data-scroll-mask="lines">
+				<img
+					class="hero-parallax__lines"
+					src="<?php echo ibm_cognitive_asset_url( 'svg/lines.svg' ); ?>"
+					alt=""
+					aria-hidden="true"
+					decoding="async"
 				>
 			</div>
 		</div>

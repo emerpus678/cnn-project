@@ -1,19 +1,19 @@
 /**
  * Scroll-activated mask reveal for hero parallax wave.svg + lines.svg.
- * Targets [data-scroll-mask] elements inside .hero-parallax sections.
+ * 80% stays visible; the right 20% draws in on scroll.
  */
 (function (window) {
   'use strict';
 
-  var VISIBLE = {
+  var FULL_VISIBLE = {
     clipPath: 'inset(0% 0% 0% 0)',
-    autoAlpha: 1,
   };
 
   var HIDDEN = {
-    clipPath: 'inset(0% 0% 100% 0)',
-    autoAlpha: 0,
+    clipPath: 'inset(0% 100% 0% 0)',
   };
+
+  var STATIC_SPLIT_PERCENT = 80;
 
   function killSectionTriggers(section) {
     if (!window.ScrollTrigger) {
@@ -21,36 +21,39 @@
     }
 
     window.ScrollTrigger.getAll().forEach(function (trigger) {
-      if (trigger.trigger === section) {
+      var el = trigger.trigger;
+
+      if (el === section || (el && section.contains(el))) {
         trigger.kill();
       }
     });
   }
 
-  function whenImagesReady(section, callback) {
-    var images = section.querySelectorAll('img');
-    var pending = images.length;
+  function whenImageReady(img, callback) {
+    var done = false;
 
-    if (!pending) {
+    function finish() {
+      if (done) {
+        return;
+      }
+
+      done = true;
       callback();
+    }
+
+    if (img.complete) {
+      finish();
       return;
     }
 
-    function done() {
-      pending -= 1;
-      if (pending <= 0) {
-        callback();
-      }
-    }
+    img.addEventListener('load', finish, { once: true });
+    img.addEventListener('error', finish, { once: true });
+    window.setTimeout(finish, 2500);
+  }
 
-    images.forEach(function (img) {
-      if (img.complete) {
-        done();
-      } else {
-        img.addEventListener('load', done, { once: true });
-        img.addEventListener('error', done, { once: true });
-      }
-    });
+  function updateMaskSplit(section) {
+    section.style.setProperty('--hero-mask-split-wave', String(STATIC_SPLIT_PERCENT));
+    section.style.setProperty('--hero-mask-split-lines', String(STATIC_SPLIT_PERCENT));
   }
 
   function initHeroParallaxAnimations(forceReset) {
@@ -77,38 +80,65 @@
 
       killSectionTriggers(section);
       section.dataset.parallaxInit = 'true';
+      section.classList.add('is-ready');
+      updateMaskSplit(section);
 
       if (reducedMotion) {
-        section.classList.add('is-ready');
-        window.gsap.set(masks, VISIBLE);
+        window.gsap.set(masks, FULL_VISIBLE);
         return;
       }
 
       window.gsap.set(masks, HIDDEN);
 
-      whenImagesReady(section, function () {
-        section.classList.add('is-ready');
+      var pending = masks.length;
+      var initialized = false;
+
+      function setupAnimations() {
+        if (initialized) {
+          return;
+        }
+
+        initialized = true;
+        updateMaskSplit(section);
 
         var timeline = window.gsap.timeline({
           scrollTrigger: {
             trigger: section,
-            start: 'top 85%',
-            end: 'bottom 15%',
+            start: 'top top',
+            end: 'bottom top',
             scrub: 0.6,
             invalidateOnRefresh: true,
           },
         });
 
-        masks.forEach(function (mask, index) {
-          var revealAt = index * 0.1;
-          var hideAt = 0.72 + index * 0.04;
-
-          timeline
-            .to(mask, Object.assign({}, VISIBLE, { duration: 0.3, ease: 'power2.out' }), revealAt)
-            .to(mask, Object.assign({}, HIDDEN, { duration: 0.25, ease: 'power2.in' }), hideAt);
+        masks.forEach(function (mask) {
+          timeline.fromTo(
+            mask,
+            HIDDEN,
+            Object.assign({}, FULL_VISIBLE, { ease: 'none', duration: 1 }),
+            0
+          );
         });
 
         window.ScrollTrigger.refresh(true);
+      }
+
+      function onAssetReady() {
+        pending -= 1;
+
+        if (pending <= 0) {
+          setupAnimations();
+        }
+      }
+
+      masks.forEach(function (mask) {
+        var img = mask.querySelector('img');
+
+        if (img) {
+          whenImageReady(img, onAssetReady);
+        } else {
+          onAssetReady();
+        }
       });
     });
   }
@@ -124,6 +154,7 @@
   window.IbmCognitiveHeroParallax = {
     init: initHeroParallaxAnimations,
     resetAndInit: resetAndInit,
+    updateMaskSplit: updateMaskSplit,
   };
 
   document.addEventListener('dev:partials-loaded', resetAndInit);
