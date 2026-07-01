@@ -8,11 +8,11 @@
   overflow: visible;
   z-index: 1;
   --cognitive-quote-box-top: 90px;
-  --cognitive-quote-box-left: 680px;
+  --cognitive-quote-box-left: 700px;
   --cognitive-quote-box-width: 400px;
   --cognitive-line-left: 320px;
-  --cognitive-line-top: -60px;
-  --cognitive-line-width: 390px;
+  --cognitive-line-top: -80px;
+  --cognitive-line-width: 400px;
 }
 
 .cognitive-quote__inner {
@@ -40,6 +40,16 @@
   display: block;
   width: 100%;
   height: auto;
+  will-change: clip-path;
+}
+
+.cognitive-quote:not(.is-line-ready) .cognitive-quote__line[data-scroll-mask] {
+  clip-path: inset(0% 0% 100% 0);
+  opacity: 0;
+}
+
+.cognitive-quote.is-line-ready .cognitive-quote__line[data-scroll-mask] {
+  transition: none;
 }
 
 .cognitive-quote__content-box {

@@ -41,6 +41,7 @@
   <script src="https://cdn.jsdelivr.net/npm/lottie-web@5.12.2/build/player/lottie.min.js"></script>
   <script src="../scripts/deep-blue.js"></script>
   <script src="../scripts/tech-focus.js"></script>
+  <script src="../scripts/cognitive-quote.js"></script>
   <script src="../scripts/lottie2.js"></script>
   <script src="../scripts/bestseller-scroll.js"></script>
   <script src="dev-loader.js"></script>
@@ -77,11 +78,14 @@
       if (window.IbmCognitiveTechFocus) {
         window.IbmCognitiveTechFocus.resetAndInit();
       }
+      if (window.IbmCognitiveCognitiveQuote) {
+        window.IbmCognitiveCognitiveQuote.resetAndInit();
+      }
       if (window.IbmCognitiveSevenFactors) {
         window.IbmCognitiveSevenFactors.resetAndInit();
       }
       if (window.IbmCognitiveBestsellerScroll) {
-        window.IbmCognitiveBestsellerScroll.resetAndInit();
+        window.IbmCognitiveBestsellerScroll.init();
       }
     });
   </script>

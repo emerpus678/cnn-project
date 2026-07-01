@@ -4,13 +4,9 @@
 (function (window) {
   'use strict';
 
-  function canScrollHorizontally(panel) {
-    return panel.scrollWidth > panel.clientWidth + 2;
-  }
-
-  function initBestsellerHorizontalScroll(forceReset) {
+  function initBestsellerHorizontalScroll() {
     document.querySelectorAll('.bestseller-page').forEach(function (panel) {
-      if (panel.dataset.horizontalScroll === 'true' && !forceReset) {
+      if (panel.dataset.horizontalScroll === 'true') {
         return;
       }
 
@@ -19,63 +15,38 @@
       panel.addEventListener(
         'wheel',
         function (event) {
-          if (!canScrollHorizontally(panel)) {
+          if (panel.scrollWidth <= panel.clientWidth) {
             return;
           }
 
-          var delta =
-            Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
-
-          if (!delta) {
+          if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) {
             return;
           }
 
-          var atStart = panel.scrollLeft <= 1;
-          var atEnd =
-            panel.scrollLeft + panel.clientWidth >= panel.scrollWidth - 2;
-          var standalone = document.body.classList.contains('bestseller-horizontal-page');
+          var atStart = panel.scrollLeft <= 0;
+          var atEnd = panel.scrollLeft + panel.clientWidth >= panel.scrollWidth - 1;
 
-          if (!standalone && ((delta > 0 && atEnd) || (delta < 0 && atStart))) {
-            return;
-          }
-
-          if (standalone && delta > 0 && atEnd) {
-            event.preventDefault();
-            return;
-          }
-
-          if (standalone && delta < 0 && atStart) {
-            event.preventDefault();
+          if ((event.deltaY < 0 && atStart) || (event.deltaY > 0 && atEnd)) {
             return;
           }
 
           event.preventDefault();
-          panel.scrollLeft += delta;
+          panel.scrollLeft += event.deltaY;
         },
         { passive: false }
       );
     });
   }
 
-  function resetAndInit() {
-    document.querySelectorAll('.bestseller-page').forEach(function (panel) {
-      delete panel.dataset.horizontalScroll;
-    });
-    initBestsellerHorizontalScroll(true);
-  }
-
   window.IbmCognitiveBestsellerScroll = {
     init: initBestsellerHorizontalScroll,
-    resetAndInit: resetAndInit,
   };
 
-  document.addEventListener('dev:partials-loaded', resetAndInit);
+  document.addEventListener('dev:partials-loaded', initBestsellerHorizontalScroll);
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function () {
-      initBestsellerHorizontalScroll(false);
-    });
+    document.addEventListener('DOMContentLoaded', initBestsellerHorizontalScroll);
   } else {
-    initBestsellerHorizontalScroll(false);
+    initBestsellerHorizontalScroll();
   }
 })(window);

@@ -3,6 +3,12 @@
  * Requires a local server (e.g. python -m http.server) — file:// blocks fetch().
  */
 const DevLoader = {
+  resolveAssetPaths(html) {
+    const assetsRoot = new URL('../assets/', window.location.href).pathname;
+
+    return html.replace(/\.\.\/assets\//g, assetsRoot.endsWith('/') ? assetsRoot : `${assetsRoot}/`);
+  },
+
   async load(partials, containerSelector) {
     const container = document.querySelector(containerSelector);
 
@@ -17,7 +23,7 @@ const DevLoader = {
         throw new Error(`Failed to load ${partial}: ${response.status}`);
       }
 
-      container.insertAdjacentHTML('beforeend', await response.text());
+      container.insertAdjacentHTML('beforeend', this.resolveAssetPaths(await response.text()));
     }
 
     document.dispatchEvent(new CustomEvent('dev:partials-loaded'));

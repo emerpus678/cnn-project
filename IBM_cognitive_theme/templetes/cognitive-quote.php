@@ -13,9 +13,11 @@ defined( 'ABSPATH' ) || exit;
 		<div class="cognitive-quote__line-wrap" aria-hidden="true">
 			<img
 				class="cognitive-quote__line"
-				src="<?php echo ibm_cognitive_asset_url( 'svg/line3.svg' ); ?>"
+				src="<?php echo ibm_cognitive_asset_url( 'svg/line2.svg' ); ?>"
 				alt=""
-				loading="lazy"
+				aria-hidden="true"
+				data-scroll-mask
+				decoding="async"
 			>
 		</div>
 

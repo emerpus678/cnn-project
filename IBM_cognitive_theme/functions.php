@@ -223,6 +223,14 @@ function ibm_cognitive_enqueue_assets() {
 	);
 
 	wp_enqueue_script(
+		'ibm-cognitive-cognitive-quote',
+		IBM_COGNITIVE_URI . '/scripts/cognitive-quote.js',
+		array( 'gsap-scroll-trigger' ),
+		IBM_COGNITIVE_VERSION,
+		true
+	);
+
+	wp_enqueue_script(
 		'ibm-cognitive-seven-factors',
 		IBM_COGNITIVE_URI . '/scripts/lottie2.js',
 		array( 'lottie-web' ),

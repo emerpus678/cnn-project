@@ -60,7 +60,7 @@
   aspect-ratio: 382 / 332;
   line-height: 0;
   margin-top: auto;
-  margin-bottom: 10px;
+  margin-bottom: 0;
 }
 
 .deep-blue__lottie svg {
@@ -124,21 +124,23 @@
   margin-top: -98px;
 }
 
-/* line1.svg — 904×234px from left edge */
+/* line1.svg — sits just below the lottie chess animation */
 .deep-blue {
-  --ibm-line1-width: 800px;
-  --ibm-line1-height: 200px;
+  --ibm-line1-width: 850px;
+  --ibm-line1-height: 250px;
 }
 
 .deep-blue__line-wrap {
   position: relative;
   left: 0;
-  bottom: 0;
+  margin-top: 10px;
+  margin-left: -48px;
   width: var(--ibm-line1-width);
   height: var(--ibm-line1-height);
-  overflow: hidden;
+  overflow: visible;
   pointer-events: none;
   z-index: 3;
+  flex-shrink: 0;
 }
 
 .deep-blue__line {
@@ -151,7 +153,6 @@
 .deep-blue:not(.is-line-ready) .deep-blue__line[data-scroll-mask] {
   clip-path: inset(0% 100% 0% 0);
   opacity: 0;
-  visibility: hidden;
 }
 
 .deep-blue.is-line-ready .deep-blue__line[data-scroll-mask] {
@@ -190,7 +191,7 @@
 
   .deep-blue__lottie {
     margin-top: 0;
-    margin-bottom: 10px;
+    margin-bottom: 0;
   }
 
   .deep-blue__stat-wrap {
@@ -202,6 +203,8 @@
   }
 
   .deep-blue__line-wrap {
+    margin-left: -24px;
+    margin-top: 10px;
     width: min(var(--ibm-line1-width), 100%);
     height: auto;
   }

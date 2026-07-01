@@ -21,16 +21,6 @@ defined( 'ABSPATH' ) || exit;
 
 	<div class="tech-focus__shade" aria-hidden="true"></div>
 
-	<div class="tech-focus__line-wrap" aria-hidden="true">
-		<img
-			class="tech-focus__line"
-			src="<?php echo ibm_cognitive_asset_url( 'svg/line2.svg' ); ?>"
-			alt=""
-			data-scroll-mask
-			loading="lazy"
-		>
-	</div>
-
 	<div class="tech-focus__inner">
 		<div class="tech-focus__content-box">
 			<div class="tech-focus__content">

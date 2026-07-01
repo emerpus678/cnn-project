@@ -21,6 +21,17 @@ defined( 'ABSPATH' ) || exit;
 					data-lottie="<?php echo ibm_cognitive_asset_url( 'animations/Animation/IBM_Chess_V1.json' ); ?>"
 					aria-hidden="true"
 				></div>
+
+				<div class="deep-blue__line-wrap" aria-hidden="true">
+					<img
+						class="deep-blue__line"
+						src="<?php echo ibm_cognitive_asset_url( 'svg/line1.svg' ); ?>"
+						alt=""
+						aria-hidden="true"
+						data-scroll-mask
+						decoding="async"
+					>
+				</div>
 			</div>
 
 			<div class="deep-blue__col deep-blue__col--right">
@@ -43,25 +54,15 @@ defined( 'ABSPATH' ) || exit;
 						</p>
 					</div>
 
-					<div class="deep-blue__pawn" aria-hidden="true">
+					<!-- <div class="deep-blue__pawn" aria-hidden="true">
 						<img
 							src="<?php echo ibm_cognitive_asset_url( 'svg/chess.svg' ); ?>"
 							alt=""
 							loading="lazy"
 						>
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</div>
-	</div>
-
-	<div class="deep-blue__line-wrap" aria-hidden="true">
-		<img
-			class="deep-blue__line"
-			src="<?php echo ibm_cognitive_asset_url( 'svg/line1.svg' ); ?>"
-			alt=""
-			data-scroll-mask
-			loading="lazy"
-		>
 	</div>
 </section>

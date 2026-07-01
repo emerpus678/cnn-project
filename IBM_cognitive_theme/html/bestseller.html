@@ -15,24 +15,25 @@
   <link rel="stylesheet" href="../css/dev.css">
   <style>
     :root { --dev-bar-height: 36px; }
-    html, body { margin: 0; padding: 0; }
   </style>
 </head>
 <body class="bestseller-horizontal-page">
   <div id="dev-nav"></div>
-  <main id="dev-page" class="bestseller-page"></main>
+  <main id="dev-page"></main>
   <script src="../scripts/bestseller-scroll.js"></script>
   <script src="dev-loader.js"></script>
   <script>
     DevLoader.load(['partials/dev-nav.html'], '#dev-nav').then(function () {
       return DevLoader.load([
+        'partials/bestseller-page-start.html',
         'partials/bestseller-intro.html',
         'partials/bestseller-story.html',
         'partials/bestseller-quote.html',
+        'partials/bestseller-page-end.html',
       ], '#dev-page');
     }).then(function () {
       if (window.IbmCognitiveBestsellerScroll) {
-        window.IbmCognitiveBestsellerScroll.resetAndInit();
+        window.IbmCognitiveBestsellerScroll.init();
       }
     });
   </script>

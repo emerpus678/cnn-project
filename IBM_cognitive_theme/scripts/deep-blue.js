@@ -14,26 +14,42 @@
     autoAlpha: 0,
   };
 
-  function killSectionTriggers(section, extraTrigger) {
+  function killSectionTriggers(section) {
     if (!window.ScrollTrigger) {
       return;
     }
 
     window.ScrollTrigger.getAll().forEach(function (trigger) {
-      if (trigger.trigger === section || (extraTrigger && trigger.trigger === extraTrigger)) {
+      var el = trigger.trigger;
+
+      if (el === section || (el && section.contains(el))) {
         trigger.kill();
       }
     });
   }
 
   function whenImageReady(img, callback) {
-    if (img.complete) {
+    var done = false;
+
+    function finish() {
+      if (done) {
+        return;
+      }
+
+      done = true;
       callback();
+    }
+
+    if (img.complete) {
+      finish();
       return;
     }
 
-    img.addEventListener('load', callback, { once: true });
-    img.addEventListener('error', callback, { once: true });
+    img.addEventListener('load', finish, { once: true });
+    img.addEventListener('error', finish, { once: true });
+
+    // Lazy/hidden images may never fire load — don't block the scroll mask forever.
+    window.setTimeout(finish, 2500);
   }
 
   function initDeepBlueLottie(forceReset) {
@@ -139,9 +155,9 @@
           Object.assign({}, LINE_VISIBLE, {
             ease: 'none',
             scrollTrigger: {
-              trigger: section,
-              start: 'top 80%',
-              end: 'bottom 30%',
+              trigger: line,
+              start: 'top 90%',
+              end: 'top 25%',
               scrub: 0.6,
               invalidateOnRefresh: true,
             },
@@ -183,9 +199,11 @@
   document.addEventListener('dev:partials-loaded', resetAndInit);
 
   function boot() {
-    if (document.querySelector('.deep-blue')) {
-      initDeepBlue(false);
+    if (!document.querySelector('.deep-blue')) {
+      return;
     }
+
+    initDeepBlue(false);
   }
 
   if (document.readyState === 'loading') {
