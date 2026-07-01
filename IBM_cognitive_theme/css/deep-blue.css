@@ -1,0 +1,213 @@
+.deep-blue {
+  position: relative;
+  width: 100%;
+  height: 870px;
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  z-index: 2;
+}
+
+.deep-blue__inner {
+  position: relative;
+  width: 100%;
+  max-width: 1440px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 72px 48px 0;
+  box-sizing: border-box;
+}
+
+.deep-blue__grid {
+  display: grid;
+  grid-template-columns: 40% 40%;
+  gap: 0 158px;
+  align-items: stretch;
+  min-height: calc(941px - 72px - var(--ibm-line1-height, 234px));
+}
+
+.deep-blue__col--left {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.deep-blue__quote {
+  font-family: "Museo Slab", Georgia, serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 26px;
+  line-height: 1.35;
+  color: #004c65;
+  width: 450px;
+  height: 96px;
+  margin: 0 0 190px;
+  box-sizing: border-box;
+  font-synthesis: none;
+}
+
+.deep-blue__col--right {
+  width: 443px;
+  height: 563px;
+  box-sizing: border-box;
+}
+
+.deep-blue__lottie {
+  display: block;
+  width: 100%;
+  max-width: 382px;
+  aspect-ratio: 382 / 332;
+  line-height: 0;
+  margin-top: auto;
+  margin-bottom: 10px;
+}
+
+.deep-blue__lottie svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.deep-blue__body {
+  font-family: montserrat, "Montserrat", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 1.65;
+  color: #333333;
+  margin: 0 0 29px;
+  font-synthesis: none;
+}
+
+.deep-blue__stat-wrap {
+  position: relative;
+  margin-top: 4px;
+  padding-right: 72px;
+}
+
+.deep-blue__stat-lead,
+.deep-blue__stat-label {
+  font-family: montserrat, "Montserrat", sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.65;
+  color: #333333;
+  margin: 0;
+  font-synthesis: none;
+}
+
+.deep-blue__stat-number {
+  font-family: "Museo Slab", Georgia, serif;
+  font-weight: 300;
+  font-size: 72px;
+  line-height: 1.05;
+  color: #004c65;
+  margin: 14px 0;
+  font-synthesis: none;
+}
+
+.deep-blue__pawn {
+  position: absolute;
+  right: 0;
+  bottom: 4px;
+  width: 72px;
+  height: 100px;
+  overflow: hidden;
+}
+
+.deep-blue__pawn img {
+  display: block;
+  width: 320px;
+  max-width: none;
+  margin-left: -192px;
+  margin-top: -98px;
+}
+
+/* line1.svg — 904×234px from left edge */
+.deep-blue {
+  --ibm-line1-width: 800px;
+  --ibm-line1-height: 200px;
+}
+
+.deep-blue__line-wrap {
+  position: relative;
+  left: 0;
+  bottom: 0;
+  width: var(--ibm-line1-width);
+  height: var(--ibm-line1-height);
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.deep-blue__line {
+  display: block;
+  width: var(--ibm-line1-width);
+  height: var(--ibm-line1-height);
+  will-change: clip-path, opacity;
+}
+
+.deep-blue:not(.is-line-ready) .deep-blue__line[data-scroll-mask] {
+  clip-path: inset(0% 100% 0% 0);
+  opacity: 0;
+  visibility: hidden;
+}
+
+.deep-blue.is-line-ready .deep-blue__line[data-scroll-mask] {
+  transition: none;
+}
+
+@media (max-width: 900px) {
+  .deep-blue {
+    height: auto;
+    min-height: 0;
+  }
+
+  .deep-blue__inner {
+    padding: 48px 24px 0;
+  }
+
+  .deep-blue__grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    min-height: 0;
+  }
+
+  .deep-blue__col--left {
+    min-height: 0;
+  }
+
+  .deep-blue__col--right,
+  .deep-blue__quote {
+    width: 100%;
+    height: auto;
+  }
+
+  .deep-blue__quote {
+    margin-bottom: 48px;
+  }
+
+  .deep-blue__lottie {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+
+  .deep-blue__stat-wrap {
+    padding-right: 0;
+  }
+
+  .deep-blue__pawn {
+    display: none;
+  }
+
+  .deep-blue__line-wrap {
+    width: min(var(--ibm-line1-width), 100%);
+    height: auto;
+  }
+
+  .deep-blue__line {
+    width: 100%;
+    height: auto;
+  }
+}

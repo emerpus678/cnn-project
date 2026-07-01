@@ -1,0 +1,19 @@
+/*
+Theme Name: IBM Cognitive Enterprise
+Theme URI: https://advertisementfeature.cnn.com/
+Description: CNN Advertisement Feature — Taking the Deep Dive with Cognitive Enterprise | IBM
+Version: 1.0.0
+Author: Turner Commercial Productions
+Text Domain: ibm-cognitive
+*/
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  display: block;
+  margin: 0;
+  padding: 0;
+}

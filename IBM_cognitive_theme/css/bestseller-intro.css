@@ -1,0 +1,141 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.product1 {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(to right, #2EB5D8 75%, #0B3C5D 20%);
+    padding: 80px 0 80px 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.left-side {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 40px;
+}
+
+.left-side p {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(1.25rem, 1.3vw + 0.6rem, 1.75rem);
+    line-height: 1.55;
+    font-weight: 400;
+    color: #ffffff;
+    max-width: 300px;
+    margin: 0;
+}
+
+.right-side {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.right-side .inner {
+    position: relative;
+    width: 50%;
+    margin-left: -12%;
+}
+
+.right-side .inner img:first-child {
+    display: block;
+    width: 100%;
+    height: auto;
+    box-shadow: none;
+}
+
+.svg-overlay {
+  position: absolute; 
+  top: 10%;
+  /* transform: rotate(90deg); */
+  /* width: calc(100% + 103px); 
+  height: calc(100% + 121px);  */
+    z-index: 2; 
+
+}
+ 
+.svg-arrow {
+    position: absolute;
+    top: 60%;
+    right: -35px;
+    width: 60px;
+    height: auto;
+    transform: translateY(-50%);
+    z-index: 3;
+    pointer-events: none;
+    opacity: 0.85;
+    stroke-width: 100px;
+}
+
+@media (max-width: 900px) {
+    .product1 {
+        flex-direction: column;
+        padding: 40px 24px;
+        background: linear-gradient(to bottom, #2EB5D8 0%, #2EB5D8 55%, #0B3C5D 55%, #0B3C5D 100%);
+    }
+
+    .left-side,
+    .right-side {
+        width: 100%;
+        padding: 20px 0;
+    }
+
+    .left-side {
+        justify-content: center;
+        text-align: center;
+        padding-right: 0;
+        padding-top: 0;
+    }
+
+    .right-side {
+        justify-content: center;
+        padding-top: 0;
+    }
+
+    .right-side .inner {
+        width: 90%;
+        margin-left: 0;
+    }
+
+    /* Scale down the SVG bleed for mobile */
+    .svg-overlay {
+        top: -20px;
+        left: -20px;
+        width: calc(100% + 40px);
+        height: calc(100% + 40px);
+    }
+
+    .svg-arrow {
+        right: -20px;
+        width: 35px;
+    }
+}
+
+@media (max-width: 480px) {
+    .product1 {
+        padding: 24px 16px;
+    }
+
+    .left-side p {
+        font-size: 1.05rem;
+        line-height: 1.5;
+    }
+} 

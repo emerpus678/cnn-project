@@ -1,0 +1,7 @@
+/**
+ * Cognitive story section wrapper (quote + data teaser).
+ */
+.cognitive-story {
+  position: relative;
+  overflow: visible;
+}

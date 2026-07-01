@@ -1,0 +1,135 @@
+.tech-focus {
+  position: relative;
+  width: 100%;
+  height: 700px;
+  overflow: visible;
+  background-color: #004c65;
+  margin: 0;
+  padding: 0;
+  z-index: 1;
+  --tech-focus-box-top: 114px;
+  --tech-focus-box-left: 726px;
+  --tech-focus-box-width: 410px;
+}
+
+.tech-focus__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.tech-focus__bg {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 130%;
+  object-fit: cover;
+  object-position: 18% center;
+  transform: translateY(-50%);
+  will-change: transform;
+}
+
+.tech-focus__shade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-color: rgba(0, 76, 101, 0.8);
+  pointer-events: none;
+}
+
+.tech-focus__inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1440px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 48px;
+  box-sizing: border-box;
+}
+
+.tech-focus__line-wrap {
+  position: absolute;
+  left: var(--ibm-line2-left);
+  top: var(--ibm-line2-top);
+  width: var(--ibm-line2-width);
+  margin-bottom: var(--ibm-line2-bottom);
+  box-sizing: border-box;
+  height: auto;
+  pointer-events: none;
+  overflow: visible;
+  z-index: 4;
+}
+
+.tech-focus__line {
+  display: block;
+  width: 100%;
+  height: auto;
+  will-change: clip-path, opacity;
+}
+
+.tech-focus:not(.is-line-ready) .tech-focus__line[data-scroll-mask] {
+  clip-path: inset(100% 0% 0% 0);
+  opacity: 0;
+  visibility: hidden;
+}
+
+.tech-focus.is-line-ready .tech-focus__line[data-scroll-mask] {
+  transition: none;
+}
+
+.tech-focus__content-box {
+  position: absolute;
+  top: var(--tech-focus-box-top);
+  left: var(--tech-focus-box-left);
+  width: var(--tech-focus-box-width);
+}
+
+.tech-focus__content {
+  width: 100%;
+  color: #ffffff;
+  text-align: left;
+}
+
+.tech-focus__heading {
+  font-family: "Museo Slab", Georgia, serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 26px;
+  line-height: 1.35;
+  margin: 0 0 28px;
+  font-synthesis: none;
+}
+
+.tech-focus__body {
+  font-family: montserrat, "Montserrat", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 1.65;
+  margin: 0;
+  font-synthesis: none;
+}
+
+@media (max-width: 900px) {
+  .tech-focus {
+    height: auto;
+    min-height: 520px;
+  }
+
+  .tech-focus__inner {
+    padding: 64px 24px;
+  }
+
+  .tech-focus__content-box {
+    position: static;
+    width: 100%;
+  }
+
+  .tech-focus__line-wrap {
+    left: max(0px, var(--ibm-line2-left));
+    width: min(var(--ibm-line2-width), 42vw);
+  }
+}

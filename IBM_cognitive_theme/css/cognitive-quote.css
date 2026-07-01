@@ -1,0 +1,144 @@
+.cognitive-quote {
+  position: relative;
+  width: 100%;
+  height: 742px;
+  background-color: #ffffff;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  z-index: 1;
+  --cognitive-quote-box-top: 90px;
+  --cognitive-quote-box-left: 680px;
+  --cognitive-quote-box-width: 400px;
+  --cognitive-line-left: 320px;
+  --cognitive-line-top: -60px;
+  --cognitive-line-width: 390px;
+}
+
+.cognitive-quote__inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1440px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 48px;
+  box-sizing: border-box;
+}
+
+.cognitive-quote__line-wrap {
+  position: absolute;
+  top: var(--cognitive-line-top);
+  left: var(--cognitive-line-left);
+  width: var(--cognitive-line-width);
+  pointer-events: none;
+  overflow: visible;
+  z-index: 1;
+}
+
+.cognitive-quote__line {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.cognitive-quote__content-box {
+  position: absolute;
+  top: var(--cognitive-quote-box-top);
+  left: var(--cognitive-quote-box-left);
+  width: var(--cognitive-quote-box-width);
+}
+
+.cognitive-quote__content {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.cognitive-quote__lead {
+  font-family: montserrat, "Montserrat", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 1.65;
+  color: #333333;
+  margin: 0 0 32px;
+  font-synthesis: none;
+}
+
+.cognitive-quote__mark {
+  display: block;
+  font-family: "Museo Slab", Georgia, serif;
+  font-weight: 300;
+  font-size: 80px;
+  line-height: 0.75;
+  color: #e85627;
+  margin: 0 0 16px;
+  font-synthesis: none;
+}
+
+.cognitive-quote__quote {
+  margin: 0 0 24px;
+  padding: 0;
+  border: 0;
+}
+
+.cognitive-quote__quote p {
+  font-family: "Museo Slab", Georgia, serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1.35;
+  color: #004c65;
+  margin: 0;
+  font-synthesis: none;
+}
+
+.cognitive-quote__cite {
+  display: block;
+  font-family: montserrat, "Montserrat", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 1.65;
+  color: #333333;
+  font-synthesis: none;
+}
+
+@media (max-width: 900px) {
+  .cognitive-story {
+    height: auto;
+  }
+
+  .cognitive-quote {
+    height: auto;
+    min-height: 0;
+  }
+
+  .cognitive-quote__inner {
+    padding: 48px 24px;
+  }
+
+  .cognitive-quote__line-wrap {
+    position: static;
+    width: min(var(--cognitive-line-width), 100%);
+    margin-bottom: 32px;
+  }
+
+  .cognitive-quote__content-box {
+    position: static;
+    width: 100%;
+  }
+
+  .cognitive-quote__content {
+    width: 100%;
+    height: auto;
+  }
+
+  .cognitive-quote__mark {
+    font-size: 56px;
+  }
+
+  .cognitive-quote__quote p {
+    font-size: 22px;
+  }
+}

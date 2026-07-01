@@ -1,0 +1,33 @@
+.intro {
+  width: 100%;
+  height: 615px;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.intro__inner {
+  width: 612px;
+  max-width: calc(100% - 48px);
+  margin: 0 auto;
+  text-align: left;
+  color: #333333;
+}
+
+.intro__lead,
+.intro__body {
+  font-family: montserrat, "Montserrat", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 1.65;
+  margin: 0;
+  font-synthesis: none;
+}
+
+.intro__lead {
+  margin-bottom: 24px;
+}

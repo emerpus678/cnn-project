@@ -1,0 +1,48 @@
+.hero-parallax__overlays {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-parallax__mask {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  -webkit-clip-path: inset(0% 0% 100% 0);
+  clip-path: inset(0% 0% 100% 0);
+  opacity: 0;
+  visibility: hidden;
+  will-change: clip-path, opacity;
+}
+
+.hero-parallax__mask--wave {
+  top: 25.9%;
+}
+
+.hero-parallax__mask--lines {
+  top: 22.2%;
+}
+
+.hero-parallax__wave,
+.hero-parallax__lines {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.hero-parallax__mask--wave .hero-parallax__wave {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-parallax__mask--lines .hero-parallax__lines {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-parallax.is-ready .hero-parallax__mask {
+  transition: none;
+  visibility: visible;
+}

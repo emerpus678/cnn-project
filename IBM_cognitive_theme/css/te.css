@@ -1,0 +1,254 @@
+/* ─────────────────────────────────────────────
+   BASE RESET & BODY
+───────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+  background: #fff;
+  color: #1a1a1a;
+}
+
+/* ─────────────────────────────────────────────
+   SECTION WRAPPER
+───────────────────────────────────────────── */
+.ce-section {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 48px 24px 72px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* ─────────────────────────────────────────────
+   INTRO TEXT
+───────────────────────────────────────────── */
+.ce-intro {
+  width: 100%;
+  max-width: 440px;
+  margin-bottom: 32px;
+}
+
+.ce-intro p {
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: #333;
+  margin-bottom: 16px;
+}
+
+.ce-intro p:last-child {
+  margin-bottom: 0;
+}
+
+.ce-intro__lead {
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.ce-intro__underline {
+  text-decoration: underline;
+  text-decoration-color: #2196c4;
+  text-underline-offset: 2px;
+}
+
+/* ─────────────────────────────────────────────
+   DESKTOP DIAGRAM CONTAINER
+   Maintains the SVG's exact 812 × 582 aspect ratio.
+   All nodes are positioned absolutely by JS.
+───────────────────────────────────────────── */
+.ce-diagram {
+  position: relative;
+  width: 100%;
+  max-width: 760px;
+  /* 582/812 = 71.67%, relative to this element's own width */
+  padding-bottom: 71.67%;
+}
+
+/* The SVG connector lines fill the container */
+.ce-diagram__lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ─────────────────────────────────────────────
+   DIAGRAM NODE
+   Centred on its coordinate via transform.
+   width is set by JS to match the SVG circle diameter.
+───────────────────────────────────────────── */
+.ce-node {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  /* JS sets left/top AND width; transform centres on the coordinate */
+  transform: translate(-50%, -50%);
+}
+
+/* ─────────────────────────────────────────────
+   ICON RING
+   Size driven by --ring-size custom property.
+   Desktop: set in JS as % of container.
+   Mobile: overridden in the media query.
+───────────────────────────────────────────── */
+.ce-icon-ring {
+  width: var(--ring-size, 120px);
+  height: var(--ring-size, 120px);
+  border-radius: 50%;
+  border: none; /* circle comes from the background SVG, not CSS */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* Lottie canvas — centred inside the ring, sized to sit within the SVG circle */
+.ce-lottie {
+  width: 46%;
+  height: 46%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ─────────────────────────────────────────────
+   CAPTIONS
+───────────────────────────────────────────── */
+.ce-caption {
+  /* width is set by JS — wider than ring diameter so text wraps loosely */
+  margin-top: 8px;
+  font-size: 10.5px;
+  line-height: 1.5;
+  color: #1a5276;
+  text-align: center;
+  white-space: normal;
+  pointer-events: none;
+}
+
+/* ─────────────────────────────────────────────
+   MOBILE GRID — hidden on desktop
+───────────────────────────────────────────── */
+.ce-grid {
+  display: none;
+}
+
+/* ─────────────────────────────────────────────
+   QUOTE
+───────────────────────────────────────────── */
+.ce-quote {
+  margin-top: 52px;
+  padding-left: 36px;
+  position: relative;
+  border: none;
+  width: 100%;
+  max-width: 760px;
+}
+
+.ce-quote::before {
+  content: '\201C';
+  position: absolute;
+  left: 0;
+  top: -4px;
+  font-size: 56px;
+  line-height: 1;
+  color: #2196c4;
+  font-family: Georgia, serif;
+}
+
+.ce-quote p {
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #1a5276;
+  max-width: 500px;
+}
+
+.ce-quote-attribution {
+  display: block;
+  margin-top: 14px;
+  font-size: 11px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.55;
+  color: #555;
+  max-width: 420px;
+}
+
+/* ─────────────────────────────────────────────
+   MOBILE  ≤ 640px
+───────────────────────────────────────────── */
+@media (max-width: 640px) {
+
+  .ce-section {
+    padding: 36px 28px 56px;
+  }
+
+  /* Hide intro + diagram on mobile */
+  .ce-intro   { display: none; }
+  .ce-diagram { display: none; }
+
+  /* Show single-column stack */
+  .ce-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .ce-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* Override ring size for mobile */
+  .ce-icon-ring {
+    --ring-size: 140px;
+  }
+
+  .ce-lottie {
+    width: 46%;
+    height: 46%;
+  }
+
+  .ce-caption {
+    font-size: 13px;
+    max-width: 220px;
+    margin-top: 12px;
+    white-space: normal;
+  }
+
+  /* Quote */
+  .ce-quote {
+    margin-top: 48px;
+    padding-left: 28px;
+  }
+
+  .ce-quote::before {
+    font-size: 44px;
+  }
+
+  .ce-quote p {
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 100%;
+  }
+
+  .ce-quote-attribution {
+    max-width: 100%;
+  }
+}

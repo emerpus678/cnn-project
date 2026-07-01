@@ -1,0 +1,14 @@
+/**
+ * Shared running-line coordinates (line1.svg dot aligns with line2.svg).
+ */
+.ibm-story {
+  position: relative;
+  overflow: visible;
+  --ibm-line1-width: 904px;
+  --ibm-line1-height: 234px;
+  --ibm-line-dot-x: calc(915.93 / 1090 * var(--ibm-line1-width));
+  --ibm-line2-width: 598px;
+  --ibm-line2-left: 262px;
+  --ibm-line2-top: -49px;
+  --ibm-line2-bottom: 49px;
+}

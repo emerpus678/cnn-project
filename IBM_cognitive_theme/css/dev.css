@@ -1,0 +1,38 @@
+/* Development-only styles — not loaded in WordPress production */
+
+.dev-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  background: #1a1a1a;
+  color: #ffffff;
+  font-family: montserrat, "Montserrat", sans-serif;
+  font-size: 12px;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+}
+
+.dev-bar__label {
+  font-weight: 500;
+  margin-right: 8px;
+  opacity: 0.6;
+}
+
+.dev-bar a {
+  color: #ffffff;
+  text-decoration: none;
+  opacity: 0.85;
+}
+
+.dev-bar a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.dev-scroll-spacer {
+  height: 120vh;
+  background: #ffffff;
+  margin-top: -1px;
+}

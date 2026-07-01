@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cognitive Quote — Dev Preview</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/fonts.css">
+  <link rel="stylesheet" href="../css/running-line.css">
+  <link rel="stylesheet" href="../css/tech-focus.css">
+  <link rel="stylesheet" href="../css/cognitive-story.css">
+  <link rel="stylesheet" href="../css/cognitive-quote.css">
+  <link rel="stylesheet" href="../css/data-teaser.css">
+  <link rel="stylesheet" href="../css/dev.css">
+</head>
+<body>
+
+  <aside class="dev-bar" aria-label="Development navigation">
+    <span class="dev-bar__label">Dev preview</span>
+    <a href="index.html">Full page</a>
+    <a href="tech-focus.html">Tech focus</a>
+  </aside>
+
+  <main id="dev-page"></main>
+  <div class="dev-scroll-spacer" aria-hidden="true"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="../scripts/tech-focus.js"></script>
+  <script src="dev-loader.js"></script>
+  <script>
+    DevLoader.load([
+      'partials/ibm-story-start.html',
+      'partials/tech-focus.html',
+      'partials/cognitive-story-start.html',
+      'partials/cognitive-quote.html',
+      'partials/data-teaser.html',
+      'partials/cognitive-story-end.html',
+    ], '#dev-page').then(function () {
+      if (window.IbmCognitiveTechFocus) {
+        window.IbmCognitiveTechFocus.resetAndInit();
+      }
+    });
+  </script>
+</body>
+</html>
