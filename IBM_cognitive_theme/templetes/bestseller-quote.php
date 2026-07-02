@@ -1,14 +1,12 @@
 <?php
 /**
- * Bestseller quote — Vineet Gautam, CEO Bestseller India.
- *
  * @package IBM_Cognitive
  */
 
 defined( 'ABSPATH' ) || exit;
 ?>
 
-<section class="bestseller-quote tdFadeInUp" aria-labelledby="bestseller-quote-heading">
+<section class="hs-panel bestseller-quote tdFadeInUp" aria-labelledby="bestseller-quote-heading">
 	<div class="container">
 		<p class="intro-text" id="bestseller-quote-heading">
 			<?php esc_html_e( 'These tip-of-iceberg insights motivated Bestseller into using Watson as part of its strategy, ultimately boosting sales.', 'ibm-cognitive' ); ?>

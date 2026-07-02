@@ -1,14 +1,12 @@
 <?php
 /**
- * Bestseller story — Watson partnership + AI workflow.
- *
  * @package IBM_Cognitive
  */
 
 defined( 'ABSPATH' ) || exit;
 ?>
 
-<section class="bestseller-story product-story tdFadeInUp" aria-label="<?php esc_attr_e( 'Bestseller product story', 'ibm-cognitive' ); ?>">
+<section class="hs-panel bestseller-story product-story tdFadeInUp" aria-label="<?php esc_attr_e( 'Bestseller product story', 'ibm-cognitive' ); ?>">
 	<div class="product-story__content">
 		<div class="product-story__copy">
 			<p class="para">

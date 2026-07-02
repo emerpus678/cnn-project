@@ -1,13 +1,12 @@
 <?php
 /**
- * Bestseller intro section.
  * @package IBM_Cognitive
  */
 
 defined( 'ABSPATH' ) || exit;
 ?>
 
-<section class="bestseller-intro tdFadeInUp" aria-labelledby="bestseller-intro-heading">
+<section class="hs-panel bestseller-intro tdFadeInUp" aria-labelledby="bestseller-intro-heading">
 	<div class="product1">
 		<div class="left-side">
 			<p id="bestseller-intro-heading">

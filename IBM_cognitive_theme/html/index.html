@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="../css/bestseller-intro.css">
   <link rel="stylesheet" href="../css/bestseller-story.css">
   <link rel="stylesheet" href="../css/bestseller-quote.css">
+  <link rel="stylesheet" href="../css/bestseller-horizontal.css">
   <link rel="stylesheet" href="../css/looties.css">
   <link rel="stylesheet" href="../css/ice-footer.css">
   <link rel="stylesheet" href="../css/dev.css">
@@ -31,7 +32,6 @@
   <div id="dev-nav"></div>
 
   <main id="dev-page"></main>
-  <div class="dev-scroll-spacer" aria-hidden="true"></div>
 
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
@@ -41,6 +41,7 @@
   <script src="../scripts/tech-focus.js"></script>
   <script src="../scripts/cognitive-quote.js"></script>
   <script src="../scripts/looties2.js"></script>
+  <script src="../scripts/bestseller-horizontal.js"></script>
   <script src="dev-loader.js"></script>
   <script>
     DevLoader.load(['partials/dev-nav.html'], '#dev-nav').then(function () {
@@ -57,9 +58,7 @@
         'partials/data-teaser.html',
         'partials/cognitive-story-end.html',
         'partials/ibm-story-end.html',
-        'partials/bestseller-intro.html',
-        'partials/bestseller-story.html',
-        'partials/bestseller-quote.html',
+        'partials/bestseller-horizontal.html',
         'partials/looties2.html',
         'partials/ice-footer.html',
       ], '#dev-page');
@@ -78,6 +77,9 @@
       }
       if (window.IbmCognitiveLooties2) {
         window.IbmCognitiveLooties2.resetAndInit();
+      }
+      if (window.IbmCognitiveBestsellerHorizontal) {
+        window.IbmCognitiveBestsellerHorizontal.refresh();
       }
     });
   </script>
