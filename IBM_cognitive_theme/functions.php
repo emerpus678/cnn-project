@@ -140,8 +140,8 @@ function ibm_cognitive_enqueue_assets() {
 	);
 
 	wp_enqueue_style(
-		'ibm-cognitive-seven-factors',
-		IBM_COGNITIVE_URI . '/css/seven-factors.css',
+		'ibm-cognitive-looties',
+		IBM_COGNITIVE_URI . '/css/looties.css',
 		array( 'ibm-cognitive-fonts' ),
 		IBM_COGNITIVE_VERSION
 	);
@@ -156,7 +156,7 @@ function ibm_cognitive_enqueue_assets() {
 	wp_enqueue_style(
 		'ibm-cognitive-style',
 		get_stylesheet_uri(),
-		array( 'ibm-cognitive-nav', 'ibm-cognitive-hero', 'ibm-cognitive-hero-parallax', 'ibm-cognitive-intro', 'ibm-cognitive-deep-blue', 'ibm-cognitive-running-line', 'ibm-cognitive-tech-focus', 'ibm-cognitive-cognitive-story', 'ibm-cognitive-cognitive-quote', 'ibm-cognitive-data-teaser', 'ibm-cognitive-bestseller-intro', 'ibm-cognitive-bestseller-story', 'ibm-cognitive-bestseller-quote', 'ibm-cognitive-seven-factors', 'ibm-cognitive-ice-footer' ),
+		array( 'ibm-cognitive-nav', 'ibm-cognitive-hero', 'ibm-cognitive-hero-parallax', 'ibm-cognitive-intro', 'ibm-cognitive-deep-blue', 'ibm-cognitive-running-line', 'ibm-cognitive-tech-focus', 'ibm-cognitive-cognitive-story', 'ibm-cognitive-cognitive-quote', 'ibm-cognitive-data-teaser', 'ibm-cognitive-bestseller-intro', 'ibm-cognitive-bestseller-story', 'ibm-cognitive-bestseller-quote', 'ibm-cognitive-looties', 'ibm-cognitive-ice-footer' ),
 		IBM_COGNITIVE_VERSION
 	);
 
@@ -217,8 +217,8 @@ function ibm_cognitive_enqueue_assets() {
 	);
 
 	wp_enqueue_script(
-		'ibm-cognitive-seven-factors',
-		IBM_COGNITIVE_URI . '/scripts/lottie2.js',
+		'ibm-cognitive-looties2',
+		IBM_COGNITIVE_URI . '/scripts/looties2.js',
 		array( 'lottie-web' ),
 		IBM_COGNITIVE_VERSION,
 		true

@@ -1,26 +1,34 @@
-
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-body {
-  font-family: var(--font-montserrat);
-  background: #fff;
-  color: #1a1a1a;
+:root {
+  --font-montserrat: montserrat, sans-serif;
+  --font-museo-slab: museo-slab, serif;
 }
 
-/* ─────────────────────────────────────────────
-   SECTION WRAPPER
-───────────────────────────────────────────── */
+body {
+  font-family: var(--font-montserrat);
+  font-weight: 300;
+  font-style: normal;
+  background: #fff;
+  color: #1a1a1a;
+  height: 1580px;
+}
+
 .ce-section {
-  max-width: 1040px;
+  max-width: 100%;
+  height: 1580px;
   margin: 0 auto;
   padding: 48px 24px 72px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: #fff;
 }
 
 /* ─────────────────────────────────────────────
@@ -28,112 +36,113 @@ body {
 ───────────────────────────────────────────── */
 .ce-intro {
   width: 100%;
-  max-width: 440px;
-  /* margin-bottom: 32px; */
+  max-width: 520px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-.ce-intro p {
-  font-size: 12.5px;
-  line-height: 1.7;
-  color: #333;
-  margin-bottom: 16px;
+.ce-intro p:first-child {
+  min-width: 40px;
+  font-family: var(--font-museo-slab);
+  font-size: 20px;
+  font-weight: 100;
+  font-style: normal;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 40px;
 }
 
 .ce-intro p:last-child {
   margin-bottom: 0;
 }
 
-.ce-intro__lead {
-  font-weight: 700;
-  color: #1a1a1a;
-}
 
+.ce-intro__lead {
+    font-family: var(--font-montserrat);
+    font-weight: 550;
+    font-style: normal;
+    color: #1a1a1a;
+    font-size: 14px;
+    line-height: 2.5;
+    max-width: 575px;
+}
 .ce-intro__underline {
   text-decoration: underline;
-  text-decoration-color: #2196c4;
   text-underline-offset: 2px;
+  color: #020e16;
 }
 
 /* ─────────────────────────────────────────────
-   DESKTOP DIAGRAM CONTAINER
-   Maintains the SVG's exact 812 × 582 aspect ratio.
-   All nodes are positioned absolutely by JS.
+   DESKTOP DIAGRAM
+   Single inline SVG (viewBox 812x582). Connector
+   lines, circles, icons (via foreignObject), and
+   captions (via foreignObject) all share the same
+   coordinate space, so alignment is exact by
+   construction — no JS math, no separate image file.
 ───────────────────────────────────────────── */
 .ce-diagram {
-  position: relative;
   width: 100%;
   max-width: 760px;
-  /* 582/812 = 71.67%, relative to this element's own width */
-  padding-bottom: 71.67%;
+  margin: 0 auto;
 }
 
-/* The SVG connector lines fill the container */
-.ce-diagram__lines {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+.ce-diagram-svg {
   display: block;
-  pointer-events: none;
-  user-select: none;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.ce-lines path {
+  fill: none;
+  stroke: #2EAFDA;
+  stroke-miterlimit: 10;
+  stroke-dasharray: 3.193;
+}
+
+.ce-circles circle {
+  fill: none;
+  stroke: #2EAFDA;
+  stroke-miterlimit: 10;
+  stroke-dasharray: 3.193;
 }
 
 /* ─────────────────────────────────────────────
-   DIAGRAM NODE
-   Centred on its coordinate via transform.
-   width is set by JS to match the SVG circle diameter.
-───────────────────────────────────────────── */
-.ce-node {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  /* JS sets left/top AND width; transform centres on the coordinate */
-  transform: translate(-50%, -50%);
-}
-
-/* ─────────────────────────────────────────────
-   ICON RING
-   Size driven by --ring-size custom property.
-   Desktop: set in JS as % of container.
-   Mobile: overridden in the media query.
+   ICON RING  (content of each foreignObject)
 ───────────────────────────────────────────── */
 .ce-icon-ring {
-  width: var(--ring-size, 120px);
-  height: var(--ring-size, 120px);
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
-  border: none; /* circle comes from the background SVG, not CSS */
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
-  position: relative;
   background: transparent;
   cursor: pointer;
 }
 
-/* Lottie canvas — centred inside the ring, sized to sit within the SVG circle */
 .ce-lottie {
-  width: 46%;
-  height: 46%;
+  width: 65%;
+  height: 65%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 /* ─────────────────────────────────────────────
-   CAPTIONS
+   CAPTIONS  (content of each foreignObject)
 ───────────────────────────────────────────── */
 .ce-caption {
-  /* width is set by JS — wider than ring diameter so text wraps loosely */
-  margin-top: 8px;
-  font-size: 10.5px;
-  line-height: 1.5;
+  font-family: var(--font-montserrat);
+  font-size: 15.5px;
+  line-height: 1.45;
+  font-weight: 500;
+  font-style: normal;
   color: #1a5276;
   text-align: center;
-  white-space: normal;
-  pointer-events: none;
+  width: 100%;
 }
 
 /* ─────────────────────────────────────────────
@@ -145,49 +154,82 @@ body {
 
 /* ─────────────────────────────────────────────
    QUOTE
+   Large serif open-quote mark + small "+" badge
+   overlapping the text, no border rule.
 ───────────────────────────────────────────── */
 .ce-quote {
-  margin-top: 52px;
-  padding-left: 36px;
+  margin-top: 60px;
   position: relative;
-  border: none;
   width: 100%;
-  max-width: 760px;
+  max-width: 560px;
+  text-align: left;
 }
 
 .ce-quote::before {
   content: '\201C';
-  position: absolute;
-  left: 0;
-  top: -4px;
-  font-size: 56px;
+  display: block;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 700;
+  font-size: 60px;
   line-height: 1;
-  color: #2196c4;
-  font-family: var(--font-museo-slab);
+  color: #0f3049;
+  margin-bottom: -6px;
+}
+
+.ce-quote-badge {
+  position: absolute;
+  top: 4px;
+  left: 236px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #0f3049;
+  color: #fff;
+  font-size: 15px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(15, 48, 73, 0.35);
 }
 
 .ce-quote p {
-  font-size: 28px;
-  font-weight: 400;
-  line-height: 1.4;
-  color: #1a5276;
-  max-width: 500px;
+  font-family: var(--font-museo-slab);
+  font-size: 22px;
+  font-weight: 300;
+  font-style: normal;
+  line-height: 1.5;
+  color: #1a1a1a;
+  margin: 0;
 }
 
 .ce-quote-attribution {
+  font-family: var(--font-montserrat);
   display: block;
-  margin-top: 14px;
-  font-size: 11px;
-  font-weight: 400;
-  font-style: normal;
+  margin-top: 16px;
+  font-size: 11.5px;
+  font-weight: 300;
+  font-style: italic;
   line-height: 1.55;
-  color: #555;
-  max-width: 420px;
+  color: #6b6b6b;
 }
 
-/* ─────────────────────────────────────────────
-   MOBILE  ≤ 640px
-───────────────────────────────────────────── */
+.blockquote {
+  margin-top: 8rem;
+}
+
+.blockquote p {
+  max-width: 390px;
+  font-family: museo-slab, serif;
+  font-size: 30px;
+
+  font-weight: 500;
+  line-height: 1.5;
+
+  font-style: normal;
+
+}
+
 @media (max-width: 640px) {
 
   .ce-section {
@@ -195,8 +237,13 @@ body {
   }
 
   /* Hide intro + diagram on mobile */
-  .ce-intro   { display: none; }
-  .ce-diagram { display: none; }
+  .ce-intro {
+    display: none;
+  }
+
+  .ce-diagram {
+    display: none;
+  }
 
   /* Show single-column stack */
   .ce-grid {
@@ -211,42 +258,36 @@ body {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    gap: 12px;
   }
 
-  /* Override ring size for mobile */
-  .ce-icon-ring {
-    --ring-size: 140px;
+  .ce-cell .ce-icon-ring {
+    width: 140px;
+    height: 140px;
   }
 
-  .ce-lottie {
-    width: 46%;
-    height: 46%;
-  }
-
-  .ce-caption {
-    font-size: 13px;
-    max-width: 220px;
-    margin-top: 12px;
-    white-space: normal;
+  .ce-cell .ce-caption {
+    font-size: 11px;
+    max-width: 200px;
+    line-height: 1.4;
   }
 
   /* Quote */
   .ce-quote {
     margin-top: 48px;
-    padding-left: 28px;
   }
 
   .ce-quote::before {
-    font-size: 44px;
+    font-size: 48px;
+  }
+
+  .ce-quote-badge {
+    left: 60%;
+    top: -2px;
   }
 
   .ce-quote p {
     font-size: 18px;
     line-height: 1.6;
-    max-width: 100%;
-  }
-
-  .ce-quote-attribution {
-    max-width: 100%;
   }
 }

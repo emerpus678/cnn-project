@@ -8,21 +8,21 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,500;0,700;1,300;1,500;1,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/fonts.css">
-  <link rel="stylesheet" href="../css/seven-factors.css">
+  <link rel="stylesheet" href="../css/looties.css">
   <link rel="stylesheet" href="../css/dev.css">
 </head>
 <body>
   <div id="dev-nav"></div>
   <main id="dev-page"></main>
   <script src="https://cdn.jsdelivr.net/npm/lottie-web@5.12.2/build/player/lottie.min.js"></script>
-  <script src="../scripts/lottie2.js"></script>
+  <script src="../scripts/looties2.js"></script>
   <script src="dev-loader.js"></script>
   <script>
     DevLoader.load(['partials/dev-nav.html'], '#dev-nav').then(function () {
-      return DevLoader.load(['partials/seven-factors.html'], '#dev-page');
+      return DevLoader.load(['partials/looties2.html'], '#dev-page');
     }).then(function () {
-      if (window.IbmCognitiveSevenFactors) {
-        window.IbmCognitiveSevenFactors.resetAndInit();
+      if (window.IbmCognitiveLooties2) {
+        window.IbmCognitiveLooties2.resetAndInit();
       }
     });
   </script>
