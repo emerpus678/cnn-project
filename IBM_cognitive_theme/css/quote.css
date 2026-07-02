@@ -1,4 +1,3 @@
-/* Reset and Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -11,29 +10,27 @@ body {
     min-height: 100vh;
     position: relative;
     overflow-x: hidden;
-    padding: 80px 24px;
+    height: 1260px;
 }
 
-/* Content Layout Container */
 .content-container {
-    max-width: 680px;
-    margin: 0 auto;
+    padding-left: 498px;
+    padding-top: 120px;
     display: flex;
     flex-direction: column;
-    gap: 48px; /* Standard spacing between blocks */
+    gap: 48px; 
 }
 
-/* Paragraph Typography */
 .body-text {
-    font-family: var(--font-montserrat);
+    font-family: 'Montserrat', sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.75;
-    color: #333333;
+    color: #050505;
     letter-spacing: -0.01em;
+    max-width: 450px;
 }
 
-/* Quote Layout */
 .quote-section {
     position: relative;
     display: flex;
@@ -42,29 +39,27 @@ body {
     margin: 12px 0;
 }
 
-/* Quote Icon color matched to image (#42c3f5) */
 .quote-icon {
-    font-family: var(--font-museo-slab);
+    font-family: 'Montserrat', sans-serif;
     font-size: 5.5rem;
-    color: #42c3f5; 
+    color: #3ab5e6; 
     line-height: 1;
     height: 45px;
     margin-left: -6px; /* Shifts mark left for optical alignment */
 }
 
-/* Core Quote Text */
 .quote-text {
-    font-family: var(--font-museo-slab);
+    font-family: 'Montserrat', sans-serif;
     font-size: 2.15rem;
-    font-weight: 400;
+    font-weight: 350;
     line-height: 1.45;
     color: #1a1a1a;
     letter-spacing: -0.02em;
+    max-width: 550px;
 }
 
-/* Citation/Author Text */
 .quote-author {
-    font-family: var(--font-montserrat);
+    font-family: 'Montserrat', sans-serif;
     font-size: 0.85rem;
     font-style: italic;
     font-weight: 400;
@@ -72,34 +67,4 @@ body {
     margin-top: 8px;
 }
 
-/* Left Accent Element (Yellow pill cutout) */
-.left-accent-pill {
-    position: absolute;
-    left: -40px;
-    top: 38%;
-    width: 120px;
-    height: 55px;
-    border: 2px solid #ffd54f; /* Warm golden-yellow border */
-    border-radius: 0 30px 30px 0; /* Rounds only the right-side corners */
-    background: transparent;
-    pointer-events: none; /* Prevents layout or click interference */
-}
 
-/* Responsive Adjustments for Smaller Screens */
-@media (max-width: 768px) {
-    body {
-        padding: 40px 20px;
-    }
-    
-    .content-container {
-        gap: 32px;
-    }
-
-    .quote-text {
-        font-size: 1.65rem;
-    }
-    
-    .left-accent-pill {
-        display: none; /* Hides the edge accent on narrow mobile screens to avoid clipping */
-    }
-}
