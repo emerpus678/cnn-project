@@ -12,7 +12,8 @@ body {
 
 .bestseller-story,
 .product-story {
-    min-height: 100vh;
+    min-height: 900px;
+    height: 900px;
     display: flex;
     flex-direction: column;
     justify-content: center;

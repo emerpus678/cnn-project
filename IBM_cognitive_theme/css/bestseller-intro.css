@@ -9,7 +9,8 @@
     justify-content: center;
     align-items:center;
     width: 100%;
-    min-height: 100vh;
+    min-height: 900px;
+    height: 900px;
     background: #2eb5d8;
     padding: 80px 0 80px 80px;
     position: relative;

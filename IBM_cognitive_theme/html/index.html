@@ -12,7 +12,6 @@
   <link rel="stylesheet" href="../css/nav.css">
   <link rel="stylesheet" href="../css/hero.css">
   <link rel="stylesheet" href="../css/hero-parallax.css">
-  <link rel="stylesheet" href="../css/hero-parallax-overlays.css">
   <link rel="stylesheet" href="../css/intro.css">
   <link rel="stylesheet" href="../css/deep-blue.css">
   <link rel="stylesheet" href="../css/running-line.css">
@@ -20,7 +19,6 @@
   <link rel="stylesheet" href="../css/cognitive-story.css">
   <link rel="stylesheet" href="../css/cognitive-quote.css">
   <link rel="stylesheet" href="../css/data-teaser.css">
-  <link rel="stylesheet" href="../css/bestseller-page.css">
   <link rel="stylesheet" href="../css/bestseller-intro.css">
   <link rel="stylesheet" href="../css/bestseller-story.css">
   <link rel="stylesheet" href="../css/bestseller-quote.css">
@@ -43,7 +41,6 @@
   <script src="../scripts/tech-focus.js"></script>
   <script src="../scripts/cognitive-quote.js"></script>
   <script src="../scripts/lottie2.js"></script>
-  <script src="../scripts/bestseller-scroll.js"></script>
   <script src="dev-loader.js"></script>
   <script>
     DevLoader.load(['partials/dev-nav.html'], '#dev-nav').then(function () {
@@ -60,11 +57,9 @@
         'partials/data-teaser.html',
         'partials/cognitive-story-end.html',
         'partials/ibm-story-end.html',
-        'partials/bestseller-page-start.html',
         'partials/bestseller-intro.html',
         'partials/bestseller-story.html',
         'partials/bestseller-quote.html',
-        'partials/bestseller-page-end.html',
         'partials/seven-factors.html',
         'partials/ice-footer.html',
       ], '#dev-page');
@@ -83,9 +78,6 @@
       }
       if (window.IbmCognitiveSevenFactors) {
         window.IbmCognitiveSevenFactors.resetAndInit();
-      }
-      if (window.IbmCognitiveBestsellerScroll) {
-        window.IbmCognitiveBestsellerScroll.init();
       }
     });
   </script>

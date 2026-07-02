@@ -70,13 +70,6 @@ function ibm_cognitive_enqueue_assets() {
 	);
 
 	wp_enqueue_style(
-		'ibm-cognitive-hero-parallax-overlays',
-		IBM_COGNITIVE_URI . '/css/hero-parallax-overlays.css',
-		array( 'ibm-cognitive-hero-parallax' ),
-		IBM_COGNITIVE_VERSION
-	);
-
-	wp_enqueue_style(
 		'ibm-cognitive-intro',
 		IBM_COGNITIVE_URI . '/css/intro.css',
 		array( 'ibm-cognitive-fonts' ),
@@ -126,16 +119,9 @@ function ibm_cognitive_enqueue_assets() {
 	);
 
 	wp_enqueue_style(
-		'ibm-cognitive-bestseller-page',
-		IBM_COGNITIVE_URI . '/css/bestseller-page.css',
-		array( 'ibm-cognitive-fonts' ),
-		IBM_COGNITIVE_VERSION
-	);
-
-	wp_enqueue_style(
 		'ibm-cognitive-bestseller-intro',
 		IBM_COGNITIVE_URI . '/css/bestseller-intro.css',
-		array( 'ibm-cognitive-fonts', 'ibm-cognitive-bestseller-page' ),
+		array( 'ibm-cognitive-fonts' ),
 		IBM_COGNITIVE_VERSION
 	);
 
@@ -170,7 +156,7 @@ function ibm_cognitive_enqueue_assets() {
 	wp_enqueue_style(
 		'ibm-cognitive-style',
 		get_stylesheet_uri(),
-		array( 'ibm-cognitive-nav', 'ibm-cognitive-hero', 'ibm-cognitive-hero-parallax', 'ibm-cognitive-hero-parallax-overlays', 'ibm-cognitive-intro', 'ibm-cognitive-deep-blue', 'ibm-cognitive-running-line', 'ibm-cognitive-tech-focus', 'ibm-cognitive-cognitive-story', 'ibm-cognitive-cognitive-quote', 'ibm-cognitive-data-teaser', 'ibm-cognitive-bestseller-page', 'ibm-cognitive-bestseller-intro', 'ibm-cognitive-bestseller-story', 'ibm-cognitive-bestseller-quote', 'ibm-cognitive-seven-factors', 'ibm-cognitive-ice-footer' ),
+		array( 'ibm-cognitive-nav', 'ibm-cognitive-hero', 'ibm-cognitive-hero-parallax', 'ibm-cognitive-intro', 'ibm-cognitive-deep-blue', 'ibm-cognitive-running-line', 'ibm-cognitive-tech-focus', 'ibm-cognitive-cognitive-story', 'ibm-cognitive-cognitive-quote', 'ibm-cognitive-data-teaser', 'ibm-cognitive-bestseller-intro', 'ibm-cognitive-bestseller-story', 'ibm-cognitive-bestseller-quote', 'ibm-cognitive-seven-factors', 'ibm-cognitive-ice-footer' ),
 		IBM_COGNITIVE_VERSION
 	);
 
@@ -234,14 +220,6 @@ function ibm_cognitive_enqueue_assets() {
 		'ibm-cognitive-seven-factors',
 		IBM_COGNITIVE_URI . '/scripts/lottie2.js',
 		array( 'lottie-web' ),
-		IBM_COGNITIVE_VERSION,
-		true
-	);
-
-	wp_enqueue_script(
-		'ibm-cognitive-bestseller-scroll',
-		IBM_COGNITIVE_URI . '/scripts/bestseller-scroll.js',
-		array(),
 		IBM_COGNITIVE_VERSION,
 		true
 	);

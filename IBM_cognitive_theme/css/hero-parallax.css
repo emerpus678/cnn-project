@@ -8,8 +8,7 @@
   margin: 0;
   padding: 0;
   margin-top: -2px;
-  --hero-mask-split-wave: 80;
-  --hero-mask-split-lines: 80;
+  --hero-mask-split: 80;
 }
 
 .hero-parallax__inner {
@@ -39,6 +38,54 @@
   pointer-events: none;
 }
 
+.hero-parallax__mask {
+  position: absolute;
+  left: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.hero-parallax__mask--wave {
+  top: 25.9%;
+  z-index: 1;
+}
+
+.hero-parallax__mask--lines {
+  top: 22.2%;
+  z-index: 2;
+}
+
+.hero-parallax__mask--left {
+  width: calc(var(--hero-mask-split) * 1%);
+}
+
+.hero-parallax__mask--right {
+  left: calc(var(--hero-mask-split) * 1%);
+  width: calc((100 - var(--hero-mask-split)) * 1%);
+  -webkit-clip-path: inset(0% 100% 0% 0);
+  clip-path: inset(0% 100% 0% 0);
+  will-change: clip-path;
+}
+
+.hero-parallax__mask--left img {
+  width: calc(100% * 100 / var(--hero-mask-split));
+  max-width: none;
+}
+
+.hero-parallax__mask--right img {
+  width: calc(100% * 100 / (100 - var(--hero-mask-split)));
+  max-width: none;
+  margin-left: calc(
+    -100% * var(--hero-mask-split) / (100 - var(--hero-mask-split))
+  );
+}
+
+.hero-parallax__wave,
+.hero-parallax__lines {
+  display: block;
+  height: auto;
+}
+
 .hero-parallax__building {
   position: absolute;
   bottom: 0;
@@ -53,7 +100,6 @@
   transform-origin: bottom center;
 }
 
-/* Scale up from bottom so facade reaches both edges (no sky gaps at sides) */
 @media (min-width: 768px) {
   .hero-parallax__building {
     width: 108%;

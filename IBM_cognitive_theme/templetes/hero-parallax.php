@@ -27,7 +27,7 @@ defined( 'ABSPATH' ) || exit;
 					decoding="async"
 				>
 			</div>
-			<div class="hero-parallax__mask hero-parallax__mask--wave hero-parallax__mask--right" data-scroll-mask="wave">
+			<div class="hero-parallax__mask hero-parallax__mask--wave hero-parallax__mask--right" data-scroll-mask>
 				<img
 					class="hero-parallax__wave"
 					src="<?php echo ibm_cognitive_asset_url( 'svg/wave.svg' ); ?>"
@@ -46,7 +46,7 @@ defined( 'ABSPATH' ) || exit;
 					decoding="async"
 				>
 			</div>
-			<div class="hero-parallax__mask hero-parallax__mask--lines hero-parallax__mask--right" data-scroll-mask="lines">
+			<div class="hero-parallax__mask hero-parallax__mask--lines hero-parallax__mask--right" data-scroll-mask>
 				<img
 					class="hero-parallax__lines"
 					src="<?php echo ibm_cognitive_asset_url( 'svg/lines.svg' ); ?>"

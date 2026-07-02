@@ -11,21 +11,18 @@ body {
   color: #1a1a1a;
 }
 
-/* ─────────────────────────────────────────────
-   SECTION WRAPPER
-───────────────────────────────────────────── */
 .ce-section {
-  max-width: 1040px;
+  max-width: 100%;
+  height: 1620px;
   margin: 0 auto;
   padding: 48px 24px 72px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: #fff;
 }
 
-/* ─────────────────────────────────────────────
-   INTRO TEXT
-───────────────────────────────────────────── */
+
 .ce-intro {
   width: 100%;
   max-width: 440px;
