@@ -126,6 +126,27 @@ function ibm_cognitive_enqueue_assets() {
 	);
 
 	wp_enqueue_style(
+		'ibm-cognitive-firstsection',
+		IBM_COGNITIVE_URI . '/css/firstsection.css',
+		array( 'ibm-cognitive-fonts' ),
+		IBM_COGNITIVE_VERSION
+	);
+
+	wp_enqueue_style(
+		'ibm-cognitive-middle',
+		IBM_COGNITIVE_URI . '/css/middle.css',
+		array( 'ibm-cognitive-fonts' ),
+		IBM_COGNITIVE_VERSION
+	);
+
+	wp_enqueue_style(
+		'ibm-cognitive-last',
+		IBM_COGNITIVE_URI . '/css/last.css',
+		array( 'ibm-cognitive-fonts' ),
+		IBM_COGNITIVE_VERSION
+	);
+
+	wp_enqueue_style(
 		'ibm-cognitive-foster-quote',
 		IBM_COGNITIVE_URI . '/css/foster-quote.css',
 		array( 'ibm-cognitive-fonts' ),
@@ -161,6 +182,13 @@ function ibm_cognitive_enqueue_assets() {
 	);
 
 	wp_enqueue_style(
+		'ibm-cognitive-goldcorp-horizontal',
+		IBM_COGNITIVE_URI . '/css/goldcorp-horizontal.css',
+		array( 'ibm-cognitive-bestseller-horizontal', 'ibm-cognitive-firstsection', 'ibm-cognitive-middle', 'ibm-cognitive-last' ),
+		IBM_COGNITIVE_VERSION
+	);
+
+	wp_enqueue_style(
 		'ibm-cognitive-looties',
 		IBM_COGNITIVE_URI . '/css/looties.css',
 		array( 'ibm-cognitive-fonts' ),
@@ -177,7 +205,7 @@ function ibm_cognitive_enqueue_assets() {
 	wp_enqueue_style(
 		'ibm-cognitive-style',
 		get_stylesheet_uri(),
-		array( 'ibm-cognitive-nav', 'ibm-cognitive-hero', 'ibm-cognitive-hero-parallax', 'ibm-cognitive-intro', 'ibm-cognitive-deep-blue', 'ibm-cognitive-running-line', 'ibm-cognitive-tech-focus', 'ibm-cognitive-cognitive-story', 'ibm-cognitive-cognitive-quote', 'ibm-cognitive-data-teaser', 'ibm-cognitive-numbers', 'ibm-cognitive-foster-quote', 'ibm-cognitive-bestseller-intro', 'ibm-cognitive-bestseller-story', 'ibm-cognitive-bestseller-quote', 'ibm-cognitive-bestseller-horizontal', 'ibm-cognitive-looties', 'ibm-cognitive-ice-footer' ),
+		array( 'ibm-cognitive-nav', 'ibm-cognitive-hero', 'ibm-cognitive-hero-parallax', 'ibm-cognitive-intro', 'ibm-cognitive-deep-blue', 'ibm-cognitive-running-line', 'ibm-cognitive-tech-focus', 'ibm-cognitive-cognitive-story', 'ibm-cognitive-cognitive-quote', 'ibm-cognitive-data-teaser', 'ibm-cognitive-numbers', 'ibm-cognitive-firstsection', 'ibm-cognitive-middle', 'ibm-cognitive-last', 'ibm-cognitive-goldcorp-horizontal', 'ibm-cognitive-foster-quote', 'ibm-cognitive-bestseller-intro', 'ibm-cognitive-bestseller-story', 'ibm-cognitive-bestseller-quote', 'ibm-cognitive-bestseller-horizontal', 'ibm-cognitive-looties', 'ibm-cognitive-ice-footer' ),
 		IBM_COGNITIVE_VERSION
 	);
 

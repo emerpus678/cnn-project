@@ -1,0 +1,38 @@
+/* Goldcorp horizontal scroll — three panels, reuses bestseller-horizontal mechanics */
+
+.hs-wrapper.goldcorp-horizontal {
+  --hs-panel-count: 3;
+  --hs-scroll-distance: 3;
+  --hs-panel-height: 900px;
+  --hs-yellow: #ff6a1f;
+}
+
+.hs-panel.goldcorp-first,
+.hs-panel.goldcorp-middle,
+.hs-panel.goldcorp-last {
+  height: 100%;
+  min-height: 100%;
+}
+
+.hs-panel.goldcorp-first {
+  overflow: visible;
+}
+
+.hs-panel.goldcorp-first .text,
+.hs-panel.goldcorp-first .right-side {
+  overflow: visible;
+}
+
+.hs-panel.goldcorp-middle,
+.hs-panel.goldcorp-last {
+  padding: 0;
+}
+
+@media (max-width: 820px) {
+  .hs-wrapper.goldcorp-horizontal .hs-panel.goldcorp-first,
+  .hs-wrapper.goldcorp-horizontal .hs-panel.goldcorp-middle,
+  .hs-wrapper.goldcorp-horizontal .hs-panel.goldcorp-last {
+    height: 900px;
+    min-height: 900px;
+  }
+}
