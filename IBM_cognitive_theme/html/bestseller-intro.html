@@ -16,7 +16,7 @@
   <main id="dev-page"></main>
   <script src="../scripts/dev-loader.js"></script>
   <script>
-    DevLoader.load(['partials/dev-nav.html'], '#dev-nav').then(function () {
+    DevLoader.load(['partials/dev-nav.html'], '#dev-nav', { notify: false }).then(function () {
       return DevLoader.load(['partials/bestseller-intro.html'], '#dev-page');
     });
   </script>

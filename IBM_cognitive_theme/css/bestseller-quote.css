@@ -1,60 +1,150 @@
-* {
-     margin: 0;
-     padding: 0;
-     box-sizing: border-box;
- }
-
+/* Bestseller panel 3 — tokens mirror goldcorp last.css */
 .bestseller-quote {
-    font-family: var(--font-montserrat);
-    background-color: #0a4d5c;
-    color: #ffffff;
-    min-height: 900px;
-    height: 900px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 5rem;
+  --bs-panel-height: var(--hs-panel-height, 900px);
+  --bs-last-bg: #004c66;
+  --bs-last-photo-width: 280px;
+  --bs-last-photo-height: 560px;
+  --bs-last-overlay-width: 560px;
+  --bs-last-quote-indent: 8rem;
+  --bs-last-quote-intro-offset: -7rem;
+  --bs-last-quote-text-width: 600px;
+  height: 100%;
+  min-height: var(--bs-panel-height);
+  background: var(--bs-last-bg);
+  color: #ffffff;
 }
 
-.bestseller-quote .container {
-    max-width: 900px;
-    width: 100%;
+.bestseller-quote__layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(2rem, 5vw, 5rem);
+  height: 100%;
+  min-height: var(--bs-panel-height);
+  padding: clamp(3rem, 6vw, 5rem) clamp(2rem, 6vw, 6rem);
+  box-sizing: border-box;
 }
 
- .intro-text {
-     font-size: 15px;
-     font-weight: 400;
-     line-height: 1.7;
-     color: rgba(255, 255, 255, 0.85);
-     margin-bottom: 50px;
-     max-width: 420px;
- }
+.bestseller-quote__media {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
- .quote-mark {
-     font-family: var(--font-museo-slab);
-     font-size: 72px;
-     color: rgba(255, 255, 255, 0.9);
-     display: inline;
- }
+.bestseller-quote__inner {
+  position: relative;
+  width: var(--bs-last-photo-width);
+  flex-shrink: 0;
+  overflow: visible;
+}
 
- .quote-text {
-     font-size: 32px;
-     font-weight: 300;
-     line-height: 1.45;
-     color: #ffffff;
-     margin-bottom: 30px;
-     letter-spacing: -0.3px;
- }
+.bestseller-quote__photo {
+  display: block;
+  width: 380px;
+  height: var(--bs-last-photo-height);
+  object-fit: cover;
+  object-position: center;
+}
 
- .attribution {
-     font-size: 14px;
-     font-weight: 400;
-     color: rgba(255, 255, 255, 0.7);
-     font-style: italic;
- }
+.bestseller-quote__overlay {
+  position: absolute;
+    left: -180px;
+    top: 270px;
+    width: var(--bs-last-overlay-width);
+    max-width: none;
+    pointer-events: none;
+    z-index: 2;
+    transform: translateY(-50%) scaleX(-1);
+}
 
- .attribution strong {
-     font-weight: 500;
-     color: rgba(255, 255, 255, 0.85);
-     font-style: normal;
- }
+.bestseller-quote__quote {
+  flex: 0 1 620px;
+  margin: 0;
+  padding: 3.5rem 0 0;
+  border: 0;
+  position: relative;
+}
+
+.bestseller-quote__intro {
+  font-family: var(--font-montserrat);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.85);
+  margin: var(--bs-last-quote-intro-offset) 0 1.25rem var(--bs-last-quote-indent);
+  width: 420px;
+}
+
+.bestseller-quote__mark {
+  position: absolute;
+  top: 4.5rem;
+  left: var(--bs-last-quote-indent);
+  display: block;
+  font-family: var(--font-museo-slab);
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  line-height: 1;
+  font-weight: 300;
+  color: #ffffff;
+  margin: 0;
+  pointer-events: none;
+}
+
+.bestseller-quote__text {
+  font-family: var(--font-museo-slab);
+  font-size: clamp(1.35rem, 1.2vw + 0.9rem, 2rem);
+  line-height: 1.55;
+  font-weight: 300;
+  color: #ffffff;
+  margin: 5rem 0 4rem var(--bs-last-quote-indent);
+  width: var(--bs-last-quote-text-width);
+  max-width: 100%;
+}
+
+.bestseller-quote__cite {
+  display: block;
+  font-family: var(--font-montserrat);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  font-weight: 400;
+  font-style: normal;
+  color: rgba(255, 255, 255, 0.92);
+  margin-left: var(--bs-last-quote-indent);
+}
+
+@media (max-width: 900px) {
+  .bestseller-quote__layout {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 5rem;
+  }
+
+  .bestseller-quote__inner,
+  .bestseller-quote__photo {
+    width: min(var(--bs-last-photo-width), 100%);
+    height: auto;
+    aspect-ratio: 280 / 560;
+  }
+
+  .bestseller-quote__overlay {
+    width: min(320px, 115%);
+  }
+
+  .bestseller-quote__quote {
+    padding-top: 3rem;
+  }
+
+  .bestseller-quote__mark,
+  .bestseller-quote__intro,
+  .bestseller-quote__text,
+  .bestseller-quote__cite {
+    margin-left: 1.5rem;
+    left: 1.5rem;
+    max-width: 100%;
+  }
+}
+
+body.bestseller-quote-preview {
+  margin: 0;
+  background: var(--bs-last-bg, #004c66);
+}
