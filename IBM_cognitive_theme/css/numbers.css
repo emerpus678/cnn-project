@@ -1,0 +1,111 @@
+.ibm-numbers {
+  --ibm-numbers-bg: #efeeec;
+  --ibm-numbers-ink: #2b2b2b;
+  --ibm-numbers-blue: #2fa8d5;
+  --ibm-numbers-orange: #e8623a;
+  --ibm-numbers-teal-dark: #17495e;
+
+  background: var(--ibm-numbers-bg);
+  color: var(--ibm-numbers-ink);
+  font-family: var(--font-museo-slab);
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+  font-size: 20px;
+}
+
+.ibm-numbers__slide {
+  width: 100%;
+  max-width: 1200px;
+  min-height: 900px;
+  background: var(--ibm-numbers-bg);
+  padding: 0px 0 0 265px;
+  position: relative;
+}
+
+.ibm-numbers__intro {
+  position: relative;
+  margin-bottom: 60px;
+  min-height: 90px;
+}
+
+.ibm-numbers__intro p {
+  font-size: 20px;
+  line-height: 1.6;
+  margin: 0;
+  padding-top: 55px;
+}
+
+.ibm-numbers__num {
+  color: #56bbdf;
+}
+
+.ibm-numbers__orange {
+  color: #ee9979;
+}
+
+.ibm-numbers__blue {
+  color: #004c66;
+}
+
+.ibm-numbers__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 88px;
+  gap: 80px;
+  margin-bottom: 110px;
+  max-width: 915px;
+  font-size: 15px;
+}
+
+.ibm-numbers__figure {
+  font-size: 60px;
+  font-weight: 400;
+  line-height: 1;
+  margin-bottom: 14px;
+}
+
+.ibm-numbers__figure .ibm-numbers__num {
+  font-size: 68px;
+}
+
+.ibm-numbers__stat p {
+  font-size: 20px;
+  line-height: 1.65;
+  max-width: 207px;
+  margin: 0;
+  color: #333;
+}
+
+.ibm-numbers__stat p u {
+  text-decoration-color: #999;
+}
+
+.ibm-numbers__highlight-dark {
+  color: var(--ibm-numbers-teal-dark);
+  font-weight: 700;
+}
+
+.ibm-numbers__summary {
+  font-size: 20px;
+  line-height: 1.85;
+  max-width: 675px;
+  margin: 0;
+}
+
+@media (max-width: 1024px) {
+  .ibm-numbers__slide {
+    padding: 80px 24px 60px;
+    min-height: auto;
+  }
+
+  .ibm-numbers__stats {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    max-width: none;
+  }
+
+  .ibm-numbers__stat p {
+    max-width: none;
+  }
+}

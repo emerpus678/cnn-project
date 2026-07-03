@@ -3,6 +3,7 @@
 
   var globalBound = false;
   var ticking = false;
+  var resizeObserver = null;
   var mq = window.matchMedia('(max-width: 820px)');
 
   function updateWrapper(wrapper) {
@@ -64,23 +65,33 @@
     });
   }
 
+  function observeWrappers() {
+    if (typeof ResizeObserver === 'undefined') {
+      return;
+    }
+
+    if (!resizeObserver) {
+      resizeObserver = new ResizeObserver(onScrollOrResize);
+      resizeObserver.observe(document.documentElement);
+    }
+
+    document.querySelectorAll('.hs-wrapper').forEach(function (wrapper) {
+      resizeObserver.observe(wrapper);
+    });
+  }
+
   function bindGlobal() {
     if (globalBound) {
+      observeWrappers();
       return;
     }
 
     globalBound = true;
     window.addEventListener('scroll', onScrollOrResize, { passive: true });
     window.addEventListener('resize', onScrollOrResize);
+    window.addEventListener('load', onScrollOrResize);
     mq.addEventListener('change', onScrollOrResize);
-
-    if (typeof ResizeObserver !== 'undefined') {
-      var resizeObserver = new ResizeObserver(onScrollOrResize);
-      resizeObserver.observe(document.documentElement);
-      document.querySelectorAll('.hs-wrapper').forEach(function (wrapper) {
-        resizeObserver.observe(wrapper);
-      });
-    }
+    observeWrappers();
   }
 
   function initHorizontalScroll(wrapper) {

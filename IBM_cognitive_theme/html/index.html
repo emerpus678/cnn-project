@@ -18,7 +18,8 @@
   <link rel="stylesheet" href="../css/tech-focus.css">
   <link rel="stylesheet" href="../css/cognitive-story.css">
   <link rel="stylesheet" href="../css/cognitive-quote.css">
-  <link rel="stylesheet" href="../css/data-teaser.css">
+  <link rel="stylesheet" href="../css/numbers.css">
+  <link rel="stylesheet" href="../css/foster-quote.css">
   <link rel="stylesheet" href="../css/bestseller-intro.css">
   <link rel="stylesheet" href="../css/bestseller-story.css">
   <link rel="stylesheet" href="../css/bestseller-quote.css">
@@ -40,11 +41,12 @@
   <script src="../scripts/deep-blue.js"></script>
   <script src="../scripts/tech-focus.js"></script>
   <script src="../scripts/cognitive-quote.js"></script>
+  <script src="../scripts/counters.js"></script>
   <script src="../scripts/looties2.js"></script>
   <script src="../scripts/bestseller-horizontal.js"></script>
   <script src="dev-loader.js"></script>
   <script>
-    DevLoader.load(['partials/dev-nav.html'], '#dev-nav').then(function () {
+    DevLoader.load(['partials/dev-nav.html'], '#dev-nav', { notify: false }).then(function () {
       return DevLoader.load([
         'partials/nav.html',
         'partials/hero.html',
@@ -55,9 +57,10 @@
         'partials/tech-focus.html',
         'partials/cognitive-story-start.html',
         'partials/cognitive-quote.html',
-        'partials/data-teaser.html',
         'partials/cognitive-story-end.html',
         'partials/ibm-story-end.html',
+        'partials/numbers.html',
+        'partials/foster-quote.html',
         'partials/bestseller-horizontal.html',
         'partials/looties2.html',
         'partials/ice-footer.html',
@@ -75,11 +78,17 @@
       if (window.IbmCognitiveCognitiveQuote) {
         window.IbmCognitiveCognitiveQuote.resetAndInit();
       }
+      if (window.IbmCognitiveCounters) {
+        window.IbmCognitiveCounters.resetAndInit();
+      }
       if (window.IbmCognitiveLooties2) {
         window.IbmCognitiveLooties2.resetAndInit();
       }
       if (window.IbmCognitiveBestsellerHorizontal) {
         window.IbmCognitiveBestsellerHorizontal.refresh();
+      }
+      if (window.IbmCognitiveLineMask) {
+        window.IbmCognitiveLineMask.resetAndInit();
       }
     });
   </script>

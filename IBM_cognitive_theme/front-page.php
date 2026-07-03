@@ -21,6 +21,8 @@ get_template_part( 'templetes/data-teaser' );
 echo '</div>';
 echo '</div>';
 
+get_template_part( 'templetes/numbers' );
+get_template_part( 'templetes/foster-quote' );
 get_template_part( 'templetes/bestseller-horizontal' );
 
 get_template_part( 'templetes/seven-factors' );

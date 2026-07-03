@@ -1,152 +1,184 @@
+body {
+  margin: 0;
+  font-family: var(--font-montserrat);
+  font-weight: 300;
+  font-style: normal;
+  background: #000;
+}
 
-    body {
-      margin: 0;
-      font-family: var(--font-montserrat);
-      font-weight: 300;
-      font-style: normal;
-      background: #000;
-    }
+.ice-footer__cta-text {
+  font-family: var(--font-museo-slab);
+  font-weight: 300;
+  font-style: normal;
+  font-size: 1rem;
+  color: #fff;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  margin-right: var(--ice-cta-text-nudge);
+}
 
-    .ice-footer__cta-text {
-      font-family: var(--font-museo-slab);
-      font-weight: 300;
-      font-style: normal;
-      font-size: 1rem;
-      color: #fff;
-      letter-spacing: 0.01em;
-      line-height: 1;
-    }
+.ice-footer__links a {
+  font-family: var(--font-montserrat);
+  font-weight: 500;
+  font-style: normal;
+  font-size: 0.8125rem;
+  color: #aaa;
+  text-decoration: none;
+}
 
-    .ice-footer__links a {
-      font-family: var(--font-montserrat);
-      font-weight: 500;
-      font-style: normal;
-      font-size: 0.8125rem;
-      color: #aaa;
-      text-decoration: none;
-    }
+.ice-footer__links a:hover {
+  text-decoration: underline;
+  color: #fff;
+}
 
-    .ice-footer__links a:hover {
-      text-decoration: underline;
-      color: #fff;
-    }
+.ice-footer__legal {
+  font-family: var(--font-montserrat);
+  font-weight: 300;
+  font-style: normal;
+  font-size: 0.75rem;
+  color: #666;
+  margin: 0;
+  line-height: 1.5;
+}
 
-    /* ── Legal copy — Montserrat Light ── */
-    .ice-footer__legal {
-      font-family: var(--font-montserrat);
-      font-weight: 300;
-      font-style: normal;
-      font-size: 0.75rem;
-      color: #666;
-      margin: 0;
-      line-height: 1.5;
-    }
+.ice-footer {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  background: #000;
+  box-sizing: border-box;
+  overflow: visible;
+  z-index: 2;
+  --ice-line-width: 240px;
+  --ice-line-height: 400px;
+  --ice-line-right: 2rem;
+  --ice-line-top: -298px;
+  --ice-cta-text-nudge: 6.7rem;
+}
 
-    .ice-footer {
-      width: 100%;
-      margin: 0 auto;
-      background: #000;
-      box-sizing: border-box;
-    }
+.ice-footer__line-wrap {
+  position: absolute;
+  right: var(--ice-line-right);
+  top: var(--ice-line-top);
+  width: var(--ice-line-width);
+  height: var(--ice-line-height);
+  pointer-events: none;
+  z-index: 20;
+}
 
-    .ice-footer__hero {
-      position: relative;
-      width: 100%;
-      height: 380px;
-      overflow: hidden;
-    }
+.ice-footer__line {
+  display: block;
+  width: var(--ice-line-width);
+  height: var(--ice-line-height);
+  object-fit: contain;
+  object-position: right top;
+  will-change: clip-path;
+}
 
-    .ice-footer__hero-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 40%;
-      display: block;
-      filter: brightness(0.75);
-    }
+/* GSAP owns clip-path once .is-line-ready — only hide before init */
+.ice-footer:not(.is-line-ready) .ice-footer__line[data-scroll-mask] {
+  clip-path: inset(0% 0% 50% 0);
+}
 
-    /* IBM logo — top-left */
-    .ice-footer__ibm-logo {
-      position: absolute;
-      top: 1.75rem;
-      left: 2rem;
-      height: 28px;
-      width: auto;
-    }
+.ice-footer.is-line-ready .ice-footer__line[data-scroll-mask] {
+  transition: none;
+}
 
-   
-    .ice-footer__cta {
-      position: absolute;
-      top: 1.75rem;
-      right: 2rem;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 0.35rem;
-      text-decoration: none;
-    }
+.ice-footer__hero {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  overflow: hidden;
+}
 
-    /* cyan dot + line rule */
-    .ice-footer__cta-rule {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      width: 100%;
-    }
+.ice-footer__hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  display: block;
+  filter: brightness(0.75);
+}
 
-    .ice-footer__cta-rule::before {
-      content: '';
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #2db0db;
-      flex-shrink: 0;
-    }
+.ice-footer__ibm-logo {
+  position: absolute;
+  top: 1.75rem;
+  left: 2rem;
+  height: 28px;
+  width: auto;
+}
 
-    .ice-footer__cta-rule::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: #2db0db;
-      min-width: 120px;
-    }
+.ice-footer__cta {
+  position: absolute;
+  top: 1.75rem;
+  right: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.35rem;
+  text-decoration: none;
+}
 
-    /* ── Bottom bar ── */
-    .ice-footer__bottom {
-      background: #111;
-      padding: 1.5rem 2rem 1.75rem;
-    }
+/* .ice-footer__cta-rule {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  width: 100%;
+} */
 
-    /* CNN logo */
-    .ice-footer__cnn-logo {
-      display: block;
-      width: 52px;
-      height: auto;
-      margin-bottom: 1.25rem;
-    }
+.ice-footer__cta-rule::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #2db0db;
+  flex-shrink: 0;
+}
 
-    /* Nav links row */
-    .ice-footer__links {
-      list-style: none;
-      margin: 0 0 0.6rem;
-      padding: 0;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.15rem 0;
-    }
+.ice-footer__cta-rule::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #2db0db;
+  min-width: 120px;
+}
 
-    .ice-footer__links li + li::before {
-      content: '  ';
-      white-space: pre;
-      color: #666;
-    }
+.ice-footer__bottom {
+  background: #111;
+  padding: 1.5rem 2rem 1.75rem;
+}
 
-    /* ── Responsive ── */
-    @media (max-width: 600px) {
-      .ice-footer__hero        { height: 220px; }
-      .ice-footer__ibm-logo    { height: 20px; left: 1rem; top: 1rem; }
-      .ice-footer__cta         { right: 1rem; top: 1rem; }
-      .ice-footer__cta-text    { font-size: 0.875rem; }
-      .ice-footer__cta-rule::after { min-width: 70px; }
-      .ice-footer__bottom      { padding: 1.25rem 1rem 1.5rem; }
-    }
+.ice-footer__cnn-logo {
+  display: block;
+  width: 52px;
+  height: auto;
+  margin-bottom: 1.25rem;
+}
+
+.ice-footer__links {
+  list-style: none;
+  margin: 0 0 0.6rem;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem 0;
+}
+
+.ice-footer__links li + li::before {
+  content: '  ';
+  white-space: pre;
+  color: #666;
+}
+
+@media (max-width: 600px) {
+  .ice-footer__line-wrap {
+    display: none;
+  }
+
+  .ice-footer__hero        { height: 220px; }
+  .ice-footer__ibm-logo    { height: 20px; left: 1rem; top: 1rem; }
+  .ice-footer__cta         { right: 1rem; top: 1rem; }
+  .ice-footer__cta-text    { font-size: 0.875rem; }
+  .ice-footer__cta-rule::after { min-width: 70px; }
+  .ice-footer__bottom      { padding: 1.25rem 1rem 1.5rem; }
+}

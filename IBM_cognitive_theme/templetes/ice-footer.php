@@ -11,6 +11,16 @@ $ibm_url = apply_filters( 'ibm_cognitive_ibm_url', '#' );
 ?>
 
 <footer class="ice-footer" role="contentinfo">
+	<div class="ice-footer__line-wrap" aria-hidden="true">
+		<img
+			class="ice-footer__line"
+			src="<?php echo ibm_cognitive_asset_url( 'svg/line4.svg' ); ?>"
+			alt=""
+			decoding="async"
+			data-scroll-mask
+		>
+	</div>
+
 	<div class="ice-footer__hero">
 		<img
 			class="ice-footer__hero-img"

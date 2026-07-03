@@ -1,105 +1,136 @@
-/* Reset and Base Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+.foster-quote {
+  background-color: #ffffff;
+  color: #222222;
+  position: relative;
+  overflow: visible;
+  z-index: 1;
+
+  --foster-line-color: #f9d302;
+  --foster-line-left: 48px;
+  --foster-line-top: 320px;
+  --foster-line-width: 320px;
+  --foster-line-crop-height: calc(var(--foster-line-width) * 600 / 944);
+  --foster-line-exit-x: 47.8%;
+  --foster-line-ext-height: 720px;
 }
 
-body {
-    background-color: #ffffff;
-    color: #222222;
-    min-height: 100vh;
-    position: relative;
-    overflow-x: hidden;
-    padding: 80px 24px;
+.foster-quote__line-wrap {
+  position: absolute;
+  top: var(--foster-line-top);
+  left: var(--foster-line-left);
+  width: var(--foster-line-width);
+  pointer-events: none;
+  overflow: visible;
+  z-index: 1;
+  will-change: clip-path;
 }
 
-/* Content Layout Container */
-.content-container {
-    max-width: 680px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 48px; /* Standard spacing between blocks */
+.foster-quote__line-crop {
+  overflow: hidden;
+  width: 100%;
+  height: var(--foster-line-crop-height);
 }
 
-/* Paragraph Typography */
-.body-text {
-    font-family: var(--font-montserrat);
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.75;
-    color: #333333;
-    letter-spacing: -0.01em;
+.foster-quote__line {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: var(--foster-line-width);
 }
 
-/* Quote Layout */
-.quote-section {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin: 12px 0;
+.foster-quote__line-ext {
+  display: block;
+  width: 2px;
+  height: var(--foster-line-ext-height);
+  margin-left: var(--foster-line-exit-x);
+  background: var(--foster-line-color);
 }
 
-/* Quote Icon color matched to image (#42c3f5) */
-.quote-icon {
-    font-family: var(--font-museo-slab);
-    font-size: 5.5rem;
-    color: #42c3f5; 
-    line-height: 1;
-    height: 45px;
-    margin-left: -6px; /* Shifts mark left for optical alignment */
+.foster-quote__line-dot {
+  display: block;
+  width: 13px;
+  height: 13px;
+  margin-left: calc(var(--foster-line-exit-x) - 6.5px);
+  border-radius: 50%;
+  background: var(--foster-line-color);
 }
 
-/* Core Quote Text */
-.quote-text {
-    font-family: var(--font-museo-slab);
-    font-size: 2.15rem;
-    font-weight: 400;
-    line-height: 1.45;
-    color: #1a1a1a;
-    letter-spacing: -0.02em;
+.foster-quote:not(.is-line-ready) .foster-quote__line-wrap[data-scroll-mask] {
+  clip-path: inset(0% 0% 100% 0);
+  opacity: 0;
 }
 
-/* Citation/Author Text */
-.quote-author {
-    font-family: var(--font-montserrat);
-    font-size: 0.85rem;
-    font-style: italic;
-    font-weight: 400;
-    color: #555555;
-    margin-top: 8px;
+.foster-quote.is-line-ready .foster-quote__line-wrap[data-scroll-mask] {
+  transition: none;
 }
 
-/* Left Accent Element (Yellow pill cutout) */
-.left-accent-pill {
-    position: absolute;
-    left: -40px;
-    top: 38%;
-    width: 120px;
-    height: 55px;
-    border: 2px solid #ffd54f; /* Warm golden-yellow border */
-    border-radius: 0 30px 30px 0; /* Rounds only the right-side corners */
-    background: transparent;
-    pointer-events: none; /* Prevents layout or click interference */
+.foster-quote__container {
+  padding: 120px 24px 120px 498px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
 }
 
-/* Responsive Adjustments for Smaller Screens */
-@media (max-width: 768px) {
-    body {
-        padding: 40px 20px;
-    }
-    
-    .content-container {
-        gap: 32px;
-    }
+.foster-quote__body {
+  font-family: var(--font-montserrat);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.75;
+  color: #050505;
+  letter-spacing: -0.01em;
+  max-width: 450px;
+  margin: 0;
+}
 
-    .quote-text {
-        font-size: 1.65rem;
-    }
-    
-    .left-accent-pill {
-        display: none; /* Hides the edge accent on narrow mobile screens to avoid clipping */
-    }
+.foster-quote__section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 12px 0;
+}
+
+.foster-quote__icon {
+  font-family: var(--font-montserrat);
+  font-size: 5.5rem;
+  color: #3ab5e6;
+  line-height: 1;
+  height: 45px;
+  margin-left: -6px;
+}
+
+.foster-quote__text {
+  font-family: var(--font-montserrat);
+  font-size: 2.15rem;
+  font-weight: 350;
+  line-height: 1.45;
+  color: #1a1a1a;
+  letter-spacing: -0.02em;
+  max-width: 550px;
+  margin: 0;
+}
+
+.foster-quote__author {
+  font-family: var(--font-montserrat);
+  font-size: 0.85rem;
+  font-style: italic;
+  font-weight: 400;
+  color: #555555;
+  margin-top: 8px;
+}
+
+@media (max-width: 1024px) {
+  .foster-quote {
+    --foster-line-left: 24px;
+    --foster-line-width: 160px;
+    --foster-line-ext-height: 480px;
+  }
+
+  .foster-quote__container {
+    padding: 80px 24px 80px 220px;
+  }
+
+  .foster-quote__text {
+    font-size: 1.65rem;
+  }
 }

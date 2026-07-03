@@ -9,7 +9,8 @@ const DevLoader = {
     return html.replace(/\.\.\/assets\//g, assetsRoot.endsWith('/') ? assetsRoot : `${assetsRoot}/`);
   },
 
-  async load(partials, containerSelector) {
+  async load(partials, containerSelector, options) {
+    options = options || {};
     const container = document.querySelector(containerSelector);
 
     if (!container) {
@@ -26,6 +27,8 @@ const DevLoader = {
       container.insertAdjacentHTML('beforeend', this.resolveAssetPaths(await response.text()));
     }
 
-    document.dispatchEvent(new CustomEvent('dev:partials-loaded'));
+    if (options.notify !== false) {
+      document.dispatchEvent(new CustomEvent('dev:partials-loaded'));
+    }
   },
 };

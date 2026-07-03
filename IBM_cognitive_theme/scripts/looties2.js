@@ -14,6 +14,9 @@
     exptech: 'ExponentialTech.json',
   };
 
+  // Matches looties.css — diagram is desktop-only above 640px.
+  var mqDesktop = window.matchMedia('(min-width: 641px)');
+
   function getLottieBase() {
     var section = document.querySelector('.ce-section[data-lottie-base]');
 
@@ -47,16 +50,35 @@
       path: path,
     });
 
+    container._lottieAnim = anim;
+
     var ring = container.closest('.ce-icon-ring');
 
-    if (ring) {
+    if (ring && !ring.dataset.lottieHoverBound) {
+      ring.dataset.lottieHoverBound = 'true';
       ring.addEventListener('mouseenter', function () {
-        anim.stop();
-        anim.play();
+        var lottieEl = ring.querySelector('.ce-lottie');
+
+        if (lottieEl && lottieEl._lottieAnim) {
+          lottieEl._lottieAnim.stop();
+          lottieEl._lottieAnim.play();
+        }
       });
     }
 
     return anim;
+  }
+
+  function clearLotties() {
+    document.querySelectorAll('.ce-lottie').forEach(function (container) {
+      if (container._lottieAnim) {
+        container._lottieAnim.destroy();
+        container._lottieAnim = null;
+      }
+
+      delete container.dataset.lottieInit;
+      container.innerHTML = '';
+    });
   }
 
   function initLooties2() {
@@ -64,21 +86,20 @@
       return;
     }
 
+    clearLotties();
+
+    if (!mqDesktop.matches) {
+      return;
+    }
+
     var lottieBase = getLottieBase();
 
     Object.keys(FILES).forEach(function (key) {
-      var path = lottieBase + FILES[key];
-
-      loadLottie('lottie-' + key, path);
-      loadLottie('lottie-' + key + '-m', path);
+      loadLottie('lottie-' + key, lottieBase + FILES[key]);
     });
   }
 
   function resetAndInit() {
-    document.querySelectorAll('.ce-lottie').forEach(function (container) {
-      delete container.dataset.lottieInit;
-      container.innerHTML = '';
-    });
     initLooties2();
   }
 
@@ -88,6 +109,7 @@
   };
 
   document.addEventListener('dev:partials-loaded', resetAndInit);
+  mqDesktop.addEventListener('change', resetAndInit);
 
   function boot() {
     if (document.querySelector('.ce-diagram-svg')) {

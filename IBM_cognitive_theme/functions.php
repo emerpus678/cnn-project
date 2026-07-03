@@ -119,6 +119,20 @@ function ibm_cognitive_enqueue_assets() {
 	);
 
 	wp_enqueue_style(
+		'ibm-cognitive-numbers',
+		IBM_COGNITIVE_URI . '/css/numbers.css',
+		array( 'ibm-cognitive-fonts' ),
+		IBM_COGNITIVE_VERSION
+	);
+
+	wp_enqueue_style(
+		'ibm-cognitive-foster-quote',
+		IBM_COGNITIVE_URI . '/css/foster-quote.css',
+		array( 'ibm-cognitive-fonts' ),
+		IBM_COGNITIVE_VERSION
+	);
+
+	wp_enqueue_style(
 		'ibm-cognitive-bestseller-intro',
 		IBM_COGNITIVE_URI . '/css/bestseller-intro.css',
 		array( 'ibm-cognitive-fonts' ),
@@ -163,7 +177,7 @@ function ibm_cognitive_enqueue_assets() {
 	wp_enqueue_style(
 		'ibm-cognitive-style',
 		get_stylesheet_uri(),
-		array( 'ibm-cognitive-nav', 'ibm-cognitive-hero', 'ibm-cognitive-hero-parallax', 'ibm-cognitive-intro', 'ibm-cognitive-deep-blue', 'ibm-cognitive-running-line', 'ibm-cognitive-tech-focus', 'ibm-cognitive-cognitive-story', 'ibm-cognitive-cognitive-quote', 'ibm-cognitive-data-teaser', 'ibm-cognitive-bestseller-intro', 'ibm-cognitive-bestseller-story', 'ibm-cognitive-bestseller-quote', 'ibm-cognitive-bestseller-horizontal', 'ibm-cognitive-looties', 'ibm-cognitive-ice-footer' ),
+		array( 'ibm-cognitive-nav', 'ibm-cognitive-hero', 'ibm-cognitive-hero-parallax', 'ibm-cognitive-intro', 'ibm-cognitive-deep-blue', 'ibm-cognitive-running-line', 'ibm-cognitive-tech-focus', 'ibm-cognitive-cognitive-story', 'ibm-cognitive-cognitive-quote', 'ibm-cognitive-data-teaser', 'ibm-cognitive-numbers', 'ibm-cognitive-foster-quote', 'ibm-cognitive-bestseller-intro', 'ibm-cognitive-bestseller-story', 'ibm-cognitive-bestseller-quote', 'ibm-cognitive-bestseller-horizontal', 'ibm-cognitive-looties', 'ibm-cognitive-ice-footer' ),
 		IBM_COGNITIVE_VERSION
 	);
 
@@ -218,6 +232,14 @@ function ibm_cognitive_enqueue_assets() {
 	wp_enqueue_script(
 		'ibm-cognitive-cognitive-quote',
 		IBM_COGNITIVE_URI . '/scripts/cognitive-quote.js',
+		array( 'gsap-scroll-trigger' ),
+		IBM_COGNITIVE_VERSION,
+		true
+	);
+
+	wp_enqueue_script(
+		'ibm-cognitive-counters',
+		IBM_COGNITIVE_URI . '/scripts/counters.js',
 		array( 'gsap-scroll-trigger' ),
 		IBM_COGNITIVE_VERSION,
 		true

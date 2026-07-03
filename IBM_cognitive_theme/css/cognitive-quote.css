@@ -128,12 +128,6 @@
     padding: 48px 24px;
   }
 
-  .cognitive-quote__line-wrap {
-    position: static;
-    width: min(var(--cognitive-line-width), 100%);
-    margin-bottom: 32px;
-  }
-
   .cognitive-quote__content-box {
     position: static;
     width: 100%;

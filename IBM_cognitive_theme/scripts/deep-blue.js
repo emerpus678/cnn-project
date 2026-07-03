@@ -40,6 +40,11 @@
       callback();
     }
 
+    if (!img) {
+      finish();
+      return;
+    }
+
     if (img.complete) {
       finish();
       return;
@@ -47,8 +52,6 @@
 
     img.addEventListener('load', finish, { once: true });
     img.addEventListener('error', finish, { once: true });
-
-    // Lazy/hidden images may never fire load — don't block the scroll mask forever.
     window.setTimeout(finish, 2500);
   }
 
@@ -68,6 +71,11 @@
       if (container._ibmChessAnim) {
         container._ibmChessAnim.destroy();
         container._ibmChessAnim = null;
+      }
+
+      if (container._ibmChessObserver) {
+        container._ibmChessObserver.disconnect();
+        container._ibmChessObserver = null;
       }
 
       container.innerHTML = '';
@@ -131,12 +139,12 @@
       var line = section.querySelector('[data-scroll-mask]');
 
       if (!line) {
-        console.warn('[IBM Cognitive] deep-blue line mask element not found.');
         return;
       }
 
       killSectionTriggers(section);
       section.dataset.lineMaskInit = 'true';
+      section.classList.remove('is-line-ready');
 
       if (reducedMotion) {
         section.classList.add('is-line-ready');
@@ -170,6 +178,10 @@
   }
 
   function initDeepBlue(forceReset) {
+    if (!document.querySelector('.deep-blue')) {
+      return;
+    }
+
     initDeepBlueLottie(forceReset);
     initDeepBlueLineMask(forceReset);
   }
@@ -180,6 +192,7 @@
         container._ibmChessObserver.disconnect();
         container._ibmChessObserver = null;
       }
+
       delete container.dataset.lottieInit;
     });
 
@@ -196,13 +209,13 @@
     resetAndInit: resetAndInit,
   };
 
-  document.addEventListener('dev:partials-loaded', resetAndInit);
+  document.addEventListener('dev:partials-loaded', function () {
+    if (document.querySelector('.deep-blue')) {
+      resetAndInit();
+    }
+  });
 
   function boot() {
-    if (!document.querySelector('.deep-blue')) {
-      return;
-    }
-
     initDeepBlue(false);
   }
 
@@ -211,6 +224,4 @@
   } else {
     boot();
   }
-
-  window.addEventListener('load', resetAndInit);
 })(window);

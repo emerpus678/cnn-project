@@ -17,23 +17,23 @@ body {
   font-style: normal;
   background: #fff;
   color: #1a1a1a;
-  height: 1580px;
+  min-height: 100vh;
 }
 
 .ce-section {
+  position: relative;
+  z-index: 0;
   max-width: 100%;
-  height: 1580px;
+  min-height: 140vh;
   margin: 0 auto;
   padding: 48px 24px 72px;
   display: flex;
   flex-direction: column;
   align-items: center;
   background: #fff;
+  overflow: visible;
 }
 
-/* ─────────────────────────────────────────────
-   INTRO TEXT
-───────────────────────────────────────────── */
 .ce-intro {
   width: 100%;
   max-width: 520px;
@@ -109,9 +109,7 @@ body {
   stroke-dasharray: 3.193;
 }
 
-/* ─────────────────────────────────────────────
-   ICON RING  (content of each foreignObject)
-───────────────────────────────────────────── */
+
 .ce-icon-ring {
   width: 100%;
   height: 100%;
@@ -131,9 +129,7 @@ body {
   justify-content: center;
 }
 
-/* ─────────────────────────────────────────────
-   CAPTIONS  (content of each foreignObject)
-───────────────────────────────────────────── */
+
 .ce-caption {
   font-family: var(--font-montserrat);
   font-size: 15.5px;
@@ -145,18 +141,12 @@ body {
   width: 100%;
 }
 
-/* ─────────────────────────────────────────────
-   MOBILE GRID — hidden on desktop
-───────────────────────────────────────────── */
+
 .ce-grid {
   display: none;
 }
 
-/* ─────────────────────────────────────────────
-   QUOTE
-   Large serif open-quote mark + small "+" badge
-   overlapping the text, no border rule.
-───────────────────────────────────────────── */
+
 .ce-quote {
   margin-top: 60px;
   position: relative;
@@ -219,7 +209,7 @@ body {
 }
 
 .blockquote p {
-  max-width: 390px;
+  max-width: 450px;
   font-family: museo-slab, serif;
   font-size: 30px;
 
